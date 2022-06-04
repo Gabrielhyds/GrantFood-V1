@@ -31,6 +31,9 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+  <?php
+      echo "<meta HTTP-EQUIV='refresh' CONTENT='10'>";
+    ?>
   <link rel="shortcut icon" href="assets/images/favicon.png" type="">
 
   <title> GrantFood </title>

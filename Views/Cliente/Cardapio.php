@@ -93,14 +93,13 @@ if(isset($_GET["action"]))
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" />
-  
 
   <!--owl slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <!-- nice select  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
   <!-- font awesome style -->
-
+  <script src="https://kit.fontawesome.com/d9f3da8e1a.js" crossorigin="anonymous"></script>
   <!-- Custom styles for this template -->
   <link href="assets/../assets/css/style.css" rel="stylesheet" />
 
@@ -187,6 +186,7 @@ if(isset($_GET["action"]))
                   </g>
                 </svg>
               </a>
+              
               <a href="pedidos.php" class="order_online">
                 Pedidos
               </a>
@@ -209,10 +209,19 @@ if(isset($_GET["action"]))
 
       <ul class="filters_menu">
         <li class="active" data-filter="*">Todos</li>
-        <li data-filter=".burger">Lanches</li>
-        <li data-filter=".pizza">Pizza</li>
-        <li data-filter=".pasta">Massas</li>
-        <li data-filter=".fries">Porções</li>
+        <?php
+          $sqlCat = "SELECT * FROM categoria ORDER BY id ASC";
+          $resultCat = mysqli_query($connection, $sqlCat);
+
+          if(mysqli_num_rows($resultCat) > 0)
+          {
+            while($row = mysqli_fetch_array($resultCat)){
+              ?>
+                <li data-filter=".<?php echo $row['id']?>"><?php echo $row['nomeCat']?></li>
+              <?php
+            }
+          }
+        ?>
       </ul>
 
       <div class="filters-content">
@@ -225,7 +234,7 @@ if(isset($_GET["action"]))
           while($row = mysqli_fetch_array($result))
           {
         ?>
-          <div class="col-sm-6 col-lg-4 all <?php echo $row["categoria"]; ?>">
+          <div class="col-sm-6 col-lg-4 all <?php echo $row["categoria_id"]; ?>">
             <div class="box">
               <div>
                 <div class="img-box">
@@ -244,7 +253,7 @@ if(isset($_GET["action"]))
                     </h6>
                       <form method="post" action="cardapio.php?action=add&id=<?php echo $row["id"]; ?>"> 
                         <button style="background-color: Transparent; background-repeat:no-repeat; border: none; " type="submit" name="addcart" data-target="#add">
-                            <span style="color: white; font-size: 1.5em;">+</span><!--<i class="fas fa-cart-plus" style="color: white; font-size: 1.5em;"></i>--></button>
+                            <i class="fas fa-plus-circle" style="color: white; font-size: 25px;"></i></button>
                   </div>
                     <input type="hidden" name="hidden_nome" value="<?php echo $row["nome"]; ?>" />
                     <input type="hidden" name="quantidade" value="1"/>
@@ -279,18 +288,15 @@ if(isset($_GET["action"]))
   </script>
   <!-- bootstrap js -->
   <script src="assets/js/bootstrap.js"></script>
-  <!-- owl slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
+  </script>
+   <script src="assets/js/custom.js"></script>
   <!-- isotope js -->
-  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
   <!-- nice select -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
-  <!-- custom js -->
-  <!-- Google Map -->
-  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
-  </script>-->
-  <!-- End Google Map -->
+  
 
 </body>
 
