@@ -10,13 +10,9 @@ session_start();
  ob_start();
 
 //verifica se a sessão usuario existe  
-<<<<<<< HEAD
 
 
 /*if(!isset($_SESSION['usuario']))
-=======
-if(!isset($_SESSION['usuario']))
->>>>>>> e3a93c739238af1d39ede76a7aeadd4834e8773f
   {
     //se não houver sessão ele redireciona para tela de login
     header("Location: ../Login/index.php");
