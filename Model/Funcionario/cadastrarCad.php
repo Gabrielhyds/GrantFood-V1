@@ -11,15 +11,16 @@
  
  //Receber os dados do formulario
  $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-//var_dump($dados);
+var_dump($dados);
 
 if(isset($dados['btnCadastrar'])){
+    $categoria = $_POST['categoria'];
     $foto = $_FILES['imagem'];
     $error = array();
     // Verifica se o arquivo é uma imagem
     if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
         $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Isso não é uma imagem &#128552;</b></div>';
-        header("Location:../index.php");
+        //header("Location:../index.php");
     } 
     if (count($error) == 0) {
             // Pega extensão da imagem
@@ -30,16 +31,20 @@ if(isset($dados['btnCadastrar'])){
             $caminho_imagem = "../../Views/Funcionario/assets/images/food/" . $nome_imagem;
             // Faz o upload da imagem para seu respectivo caminho
             if(move_uploaded_file($foto["tmp_name"], $caminho_imagem)){
+                //query_
                 $query_produto = "INSERT INTO produtos 
-                (nome,descricao,image,preco,categoria) VALUES
-                (:nome , :descricao, :image ,:preco, :categoria)";
+                (nome,descricao,image,preco,categoria_id) VALUES
+                (:nome , :descricao, :image ,:preco, :categoria_id)";
                 $cad_produto = $connPDO->prepare($query_produto);
                 $cad_produto->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
                 $cad_produto->bindParam(':descricao', $dados['descricao'], PDO::PARAM_STR);
                 $cad_produto->bindParam(':image', $nome_imagem, PDO::PARAM_STR);
                 $cad_produto->bindParam(':preco', $dados['preco'], PDO::PARAM_STR);
-                $cad_produto->bindParam(':categoria', $dados['categoria'], PDO::PARAM_STR);
+                $cad_produto->bindParam(':categoria_id', $categoria, PDO::PARAM_INT);
                 $cad_produto->execute();
+
+                //$id_usuario = $connPDO->lastInsertId();
+
         
                 $_SESSION['msg'] = '<div class="alert alert-success" role="alert"><b>Produto Cadastrado com sucesso &#128523;</b></div>';
                 header("Location:../../Views/Funcionario/cardapio.php");
