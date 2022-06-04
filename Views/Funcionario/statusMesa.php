@@ -1,14 +1,15 @@
 <?php
 
-//Iniciar a sessao
-session_start(); 
+// Conexao com o banco de dados:
+include_once("../../Banco/Conexao.php");
 
-// inclui o banco 
-include '../../Banco/Conexao.php';
+//Iniciar a sessao
+session_start();
+
+//Limpar o buffer de saida
+ ob_start();
 
 //verifica se a sessão usuario existe  
-
-
 if(!isset($_SESSION['usuario']))
   {
     //se não houver sessão ele redireciona para tela de login
@@ -49,10 +50,10 @@ include_once "foto.php";
 	  			</div>
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
-        <li >
+        <li class="active">
             <a href="statusMesa.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
           </li>
-          <li class="active">
+          <li>
               <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-user-plus mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
               <ul class="collapse list-unstyled" id="userSubmenu">
                   <li>

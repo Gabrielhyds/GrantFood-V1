@@ -7,7 +7,7 @@
  ob_start();
 
  //Incluir a conexao com BD
- include_once "../../Banco/Conexao.php"; 
+ Require_once "../../Banco/Conexao.php"; 
  
  //Receber os dados do formulario
  $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -27,13 +27,13 @@ if(isset($dados['btnCadastrar'])){
             // Gera um nome único para a imagem
             $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
             // Caminho de onde ficará a imagem
-            $caminho_imagem = "../assets/images/food/" . $nome_imagem;
+            $caminho_imagem = "../../Views/Funcionario/assets/images/food/" . $nome_imagem;
             // Faz o upload da imagem para seu respectivo caminho
             if(move_uploaded_file($foto["tmp_name"], $caminho_imagem)){
                 $query_produto = "INSERT INTO produtos 
                 (nome,descricao,image,preco,categoria) VALUES
                 (:nome , :descricao, :image ,:preco, :categoria)";
-                $cad_produto = $conn->prepare($query_produto);
+                $cad_produto = $connPDO->prepare($query_produto);
                 $cad_produto->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
                 $cad_produto->bindParam(':descricao', $dados['descricao'], PDO::PARAM_STR);
                 $cad_produto->bindParam(':image', $nome_imagem, PDO::PARAM_STR);
@@ -41,10 +41,11 @@ if(isset($dados['btnCadastrar'])){
                 $cad_produto->bindParam(':categoria', $dados['categoria'], PDO::PARAM_STR);
                 $cad_produto->execute();
         
-                $_SESSION['msg'] = '<div class="alert alert-success" role="alert"><b>Produto Cadastrado com sucesso &#128526;</b></div>';
-                header("Location:../index.php");
+                $_SESSION['msg'] = '<div class="alert alert-success" role="alert"><b>Produto Cadastrado com sucesso &#128523;</b></div>';
+                header("Location:../../Views/Funcionario/cardapio.php");
             }else{
-                    $result = false;
+                $_SESSION['msg'] = '<div class="alert alert-success" role="alert"><b>Erro ao cadastrar o produto &#128532;</b></div>';
+                header("Location:../../Views/Funcionario/cardapio.php");
             }
     }
 }
