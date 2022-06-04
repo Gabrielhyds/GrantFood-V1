@@ -12,15 +12,15 @@ session_start();
 //verifica se a sessão usuario existe  
 
 
-/*if(!isset($_SESSION['usuario']))
+if(!isset($_SESSION['usuario']))
   {
     //se não houver sessão ele redireciona para tela de login
     header("Location: ../Login/index.php");
     exit;
-}*/
+}
 
 //inclui a foto do usuário
-//include_once "foto.php";
+include_once "foto.php";
 
 ?>
 <!doctype html>
@@ -35,8 +35,7 @@ session_start();
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/cards.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   </head>
   <body>
 	<div class="wrapper d-flex align-items-stretch">
@@ -50,8 +49,8 @@ session_start();
         </div>
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bg_1.jpg);">
 	  			<div class="user-logo">
-            <img  class="img" src="assets/images/FotoPerfil/<?php  //echo $foto?>" alt="foto">
-	  				<h3>Gerente: <?php // ARRUMAR echo @$_SESSION['usuario']?></h3>
+            <img  class="img" src="assets/images/FotoPerfil/<?php  echo $foto?>" alt="foto">
+	  				<h3>Gerente: <?php echo @$_SESSION['usuario']?></h3>
 	  			</div>
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
@@ -79,7 +78,7 @@ session_start();
                             <a href="cardapio.php">Cadastrar Produto</a>
                         </li>
                         <li>
-                            <a href="#">Consultar Produto</a>
+                            <a href="listarCad.php">Consultar Produto</a>
                         </li>
                     </ul>
                 </li>

@@ -49,7 +49,7 @@ include_once "foto.php";
   </head>
   <body>
 	<div class="wrapper d-flex align-items-stretch">
-			<nav id="sidebar" style="background-color:#3D5A80">
+			<nav id="sidebar" style="background-color:#3D5A80" >
 				<div class="custom-menu">
 					<button type="button" id="sidebarCollapse" class="btn btn-primary" style="position: relative; top: 80px; background-color: #3D5A80">
 	        </button>
@@ -88,7 +88,7 @@ include_once "foto.php";
                             <a href="cardapio.php">Cadastrar Produto</a>
                         </li>
                         <li>
-                            <a href="#">Consultar Produto</a>
+                            <a href="listarCad.php">Consultar Produto</a>
                         </li>
                     </ul>
                 </li>
@@ -270,7 +270,7 @@ include_once "foto.php";
                 </div>
                 </div>
                 <div class="row">
-                  <div class="col-3 mb-4">
+                  <div class="col mb-5">
                     <label for="permissao" class="form-label" >Permissão</label>
                     <select name="permissao" class="form-control" required>
                       <option value="0" disabled selected>Selecione</option>
@@ -279,16 +279,19 @@ include_once "foto.php";
                       <option value="3">Cozinha</option>
                     </select>
                   </div>
-                  <div class="col-3 mb-4">
+                  <div class="col mb-5">
                     <label for="salario" class="form-label">salario</label>
                     <input type="number" class="form-control" name="salario" id="salario" min="1" required>
                   </div>
-                  <div class="col-3 mb-4">
+                  <div class="col mb-5">
                     <label for="cargaHoraria" class="form-label">carga Horaria</label>
                     <input type="number" class="form-control" name="cargaHoraria" id="cargaHoraria" min="1" required>
-                  </div></div>
+                  </div>
+                </div>
+                <div style="margin-left: -20px;">
                   <button type="submit" class="btn btn-success" name="btnCadastrar">cadastrar</button>
                   <button type="reset" class="btn btn-danger"  name="btnEditar">limpar</button>
+                </div>
               </fieldset>
             </form>
           </div>  

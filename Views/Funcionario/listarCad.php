@@ -69,7 +69,7 @@ include_once "foto.php";
         <li >
             <a href="statusMesa.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
           </li>
-          <li class="active">
+          <li >
               <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-user-plus mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
               <ul class="collapse list-unstyled" id="userSubmenu">
                   <li>
@@ -83,7 +83,7 @@ include_once "foto.php";
           <li>
             <a href="relatorioVendas.php"><span class="fa fa-file-text-o mr-3"></span>Relatorio de Vendas</a>
           </li>
-          <li class="">
+          <li class="active">
                     <a href="#cardapioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-tasks mr-3"></span>Cardápio<i class="icofont-rounded-down text-white"></i></a>
                     <ul class="collapse list-unstyled" id="cardapioSubmenu">
                         <li>
@@ -106,7 +106,7 @@ include_once "foto.php";
 
         <!-- Pagina principal -->
       <div id="content" class="p-4 p-md-5 pt-5" style="background-color:#98C1D9; max-width:109%;overflow-x:hidden">
-          <label class="mb-4" style="font-size: 40px; color: white; font-weight: bold; font-family: arial; background-color: #3D5A80; width: 109.9%; position: relative; bottom: 50px; right: 65px; padding-left: 70px; padding-top: 18px; padding-bottom: 18px; margin-right: -70px;">GERENCIAR USUÁRIOS</label>
+          <label class="mb-4" style="font-size: 40px; color: white; font-weight: bold; font-family: arial; background-color: #3D5A80; width: 109.9%; position: relative; bottom: 50px; right: 65px; padding-left: 70px; padding-top: 18px; padding-bottom: 18px; margin-right: -70px;">CARDÁPIO</label>
           <form method="POST">
             <div>
               <?php
@@ -117,48 +117,36 @@ include_once "foto.php";
               ?>
             </div>
               <div>
-              <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
+              <?php $sql = "SELECT * FROM produtos"; $result = $connection->query($sql);?>
               <table class="table alert alert-primary">
                 <thead>
                   <tr>
-                    <td colspan="6"><h4 class="alert-heading">Funcionários cadastrados no sistema</h4><hr></td>
+                    <td colspan="6"><h4 class="alert-heading">Produtos cadastrados no sistema</h4><hr></td>
                   </tr>
                     <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Usuário</th>
-                    <th scope="col">Salário</th>
-                    <th scope="col">Permissão</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">imagem</th>
+                    <th scope="col">preço</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
                 <tbody>
                     <tr>
-                    <th scope="row"><?php echo $row["idFunc"]; ?></th>
+                    <th scope="row"><?php echo $row["id"]; ?></th>
                     <td><?php echo $row["nome"]; ?></td>
-                    <td><?php echo $row["usuario"]; ?></td>
-                    <td><?php echo $row["salario"]; ?></td>
-                    <?php
-                    
-                      switch($row['tipo']){
-                        case 1:
-                          $tipo = 'Gerente';
-                          break;
-                        case 2:
-                          $tipo = "Garçom";
-                          break;
-                        case 3:
-                          $tipo = "Cozinha";
-                          break;
-                      }
-                    ?>
-                    <td><?php echo $tipo;?></td>
+                    <td><?php echo $row["descricao"]; ?></td>
+                    <td><?php echo $row["image"]; ?></td>
+                    <td><?php echo $row["preco"]; ?></td>
+                    <td><?php echo $row["categoria"]; ?></td>
                     <td> 
-                      <a href="../../Model/Funcionario/editarFunc.php?id=<?php echo $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                      <a href="../../Model/Funcionario/editarCad.php?id=<?php echo $row['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>
                       </a> 
-                      <a href="../../Model/Funcionario/excluirFunc.php?id=<?php echo  $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                      <a href="../../Model/Funcionario/excluirCad.php?id=<?php echo  $row['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
                       </a> 
@@ -166,7 +154,7 @@ include_once "foto.php";
                     </tr>
                 </tbody>
                 <?php   }}else{echo '<div class="alert alert-danger" role="alert">
-                                        &#128552 nenhum usuário cadastrado!
+                                        &#128552 nenhum produto cadastrado!
                                       </div>';} ?> 
                 </table>
               </div>

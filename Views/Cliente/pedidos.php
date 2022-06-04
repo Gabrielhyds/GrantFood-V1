@@ -217,18 +217,24 @@
                     <?php 
                     $total = 0;
                     $sessao = $_SESSION['chave'];
-                                $sql2 = "SELECT pi.id, pi.item, pi.quantidade, pi.preco, pi.total FROM pedidoitem as pi 
+                                $sql2 = "SELECT pi.id, pi.item, pi.quantidade, pi.preco, pi.total, pi.idProduto FROM pedidoitem as pi 
                              INNER JOIN pedido as p on p.id = pi.codPedido WHERE pi.codPedido = '$numero'";
 
                                 $gotResuslts2 = mysqli_query($connection,$sql2);
                                 if($gotResuslts2){
                                     if(mysqli_num_rows($gotResuslts2)>0){
                                        while($values = mysqli_fetch_array($gotResuslts2)){
+                                        $idProduto = $values['idProduto'];
+                                        $imgProduto = "SELECT image FROM produtos WHERE id = '$idProduto'";
+                                        $results = mysqli_query($connection, $imgProduto);
+                                        if($results){
+                                          $produto = mysqli_fetch_array($results);
+                                        }
 
                      ?>
                     <div class="row border-top border-bottom">
                         <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid" src="assets/images/food/<?php echo $values["item"]  . ".png";; ?>"></div>
+                            <div class="col-2"><img class="img-fluid" src="../Funcionario/assets/images/food/<?php echo $produto["image"] . ""; ?>"></div>
                             <div class="col">
                                 <div class="row text-muted"><?php echo $values["item"]; ?></div>
                             </div>

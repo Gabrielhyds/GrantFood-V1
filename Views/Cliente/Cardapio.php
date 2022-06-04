@@ -29,7 +29,9 @@ if(isset($_POST["addcart"]))
         'item_id'     =>  $_GET["id"],
         'item_name'     =>  $_POST["hidden_nome"],
         'item_price'    =>  $_POST["hidden_preco"],
-        'item_quantity'   =>  $_POST["quantidade"]
+        'item_quantity'   =>  $_POST["quantidade"],
+        'item_imagem'   =>  $_POST["imagem"],
+        'item_idProduto'   =>  $_POST["idProduto"]
       );
       $_SESSION["shopping_cart"][$count] = $item_array;
       echo '<script>alert("Item adicionado")</script>';
@@ -45,7 +47,9 @@ if(isset($_POST["addcart"]))
       'item_id'     =>  $_GET["id"],
       'item_name'     =>  $_POST["hidden_nome"],
       'item_price'    =>  $_POST["hidden_preco"],
-      'item_quantity'   =>  $_POST["quantidade"]
+      'item_quantity'   =>  $_POST["quantidade"],
+      'item_imagem'   =>  $_POST["imagem"],
+      'item_idProduto'   =>  $_POST["idProduto"]
     );
     $_SESSION["shopping_cart"][0] = $item_array;
     echo '<script>alert("Item adicionado")</script>';
@@ -62,7 +66,7 @@ if(isset($_GET["action"]))
       {
         unset($_SESSION["shopping_cart"][$keys]);
         echo '<script>alert("Item removido")</script>';
-        echo '<script>window.location="index.php"</script>';
+        echo '<script>window.location="carrinho.php"</script>';
       }
     }
   }
@@ -225,7 +229,7 @@ if(isset($_GET["action"]))
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="assets/images/food/<?php echo $row["image"]; ?>" alt="">
+                  <img src="../../Views/Funcionario/assets/images/food/<?php echo $row["image"]; ?>" alt="">
                 </div>
                 <div class="detail-box" style="background-color: #FF3A0B;">
                   <h5>
@@ -245,6 +249,8 @@ if(isset($_GET["action"]))
                     <input type="hidden" name="hidden_nome" value="<?php echo $row["nome"]; ?>" />
                     <input type="hidden" name="quantidade" value="1"/>
                     <input type="hidden" name="hidden_preco" value="<?php echo $row["preco"]; ?>" />
+                    <input type="hidden" name="imagem" value="<?php echo $row["image"]; ?>" />
+                    <input type="hidden" name="idProduto" value="<?php echo $row["id"]; ?>" />
                   </form>
                 </div>
               </div>
