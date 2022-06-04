@@ -1,5 +1,5 @@
 <?php
-include('../config/db.php');
+include('../../Banco/Conexao.php');
 session_start();
 // Report all PHP errors
 error_reporting(E_ALL);
@@ -50,7 +50,7 @@ if(isset($_POST['update'])){
 
                unset($_SESSION["shopping_cart"]);
      
-               header('Location: ../pedidos.php?success=pedidoFeito');
+               header('Location: ../../Views/Cliente/pedidos.php?success=pedidoFeito');
                     
                     
                  }else{

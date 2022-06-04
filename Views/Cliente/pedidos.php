@@ -1,5 +1,5 @@
 <?php
-  include('config/db.php');
+  include('../../Banco/Conexao.php');
   session_start();
   if(!isset($_SESSION['mesa']))
   {
@@ -63,7 +63,7 @@
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.php">
+          <a class="navbar-brand" href="cardapio.php">
             <span>
               GrantFood
             </span>
@@ -170,7 +170,7 @@
           if($gotResuslts1){
             if(mysqli_num_rows($gotResuslts1)>0){
               ?>
-              <form action="processar/fecharConta.php" method="POST">
+              <form action="../../Model/Cliente/fecharConta.php" method="POST">
                 <button type="submit" class="btn" name="update">Fechar conta</button>
               </form>
               <?php
@@ -252,7 +252,7 @@
                       if($status == 'Enviado'){
                     ?>
                     <div class="row" id="botao">
-                      <form action="processar/cancelar.php" method="POST">
+                      <form action="../../Model/Cliente/cancelarPedido.php" method="POST">
                           <input type="hidden" name="numero" value="<?php echo $numero;?>">
                           <button class="btn" type="submit" name="cancelar">Cancelar pedido</button> 
                       </form>
@@ -297,7 +297,7 @@
   <!-- end food section -->
 
   <!-- footer section -->
-  <?php include 'includes/footer.php'?>
+  <?php include 'footer.php'?>
   <!-- footer section -->
 
   <!-- jQery -->

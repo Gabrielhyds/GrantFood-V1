@@ -1,5 +1,5 @@
 <?php
-include('../config/db.php');
+include('../../Banco/Conexao.php');
 session_start();
 
 if(isset($_POST['cancelar'])){
@@ -13,6 +13,6 @@ if(isset($_POST['cancelar'])){
         $results2 = mysqli_query($connection, $sql2);
 
 
-        header('Location: ../pedidos.php?success=pedidoApagado');
+        header('Location: ../../Views/Cliente/pedidos.php?success=pedidoApagado');
     }
 }

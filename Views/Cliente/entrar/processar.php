@@ -1,5 +1,5 @@
 <?php
-include('../config/db.php');
+  include('../../../Banco/Conexao.php');
 session_start();
 // Report all PHP errors
 error_reporting(E_ALL);
@@ -35,7 +35,7 @@ if(isset($_POST['submit2'])){
 
                                     $_SESSION['chave'] = $chave;
                                     
-                                    header('Location: ../index.php');
+                                    header('Location: ../Cardapio.php');
                                 }
                         }
                     }

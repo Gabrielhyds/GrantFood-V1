@@ -1,5 +1,5 @@
 <?php
-  include('config/db.php');
+  include('../../Banco/Conexao.php');
   session_start();
   if(!isset($_SESSION['mesa']))
   {
@@ -80,7 +80,7 @@ if(isset($_GET["action"]))
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.php">
+          <a class="navbar-brand" href="cardapio.php">
             <span>
               GrantFood
             </span>
@@ -205,7 +205,7 @@ if(isset($_GET["action"]))
                     }
                     ?>
                 <br>
-                <form action="processar/pedidos.php" method="POST">
+                <form action="../../Model/Cliente/fazerPedido.php" method="POST">
                   <div class="form-floating">
                     <label for="floatingTextarea">Observação (opcional)</label>
                     <textarea class="form-control" name="observacao" style="height: 100px" placeholder="Escreva a sua observação do pedido." id="floatingTextarea"></textarea>
@@ -240,7 +240,7 @@ if(isset($_GET["action"]))
   <!-- end food section -->
 
   <!-- footer section -->
-  <?php include 'includes/footer.php'?>
+  <?php include 'footer.php'?>
   <!-- footer section -->
 
   <!-- jQery -->

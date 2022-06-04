@@ -1,5 +1,5 @@
 <?php
-  include('config/db.php');
+  include('../../Banco/Conexao.php');
   session_start();
   if(!isset($_SESSION['mesa']))
   {
@@ -114,7 +114,7 @@ if(isset($_GET["action"]))
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.php">
+          <a class="navbar-brand" href="cardapio.php">
             <span>
               GrantFood
             </span>
@@ -237,7 +237,7 @@ if(isset($_GET["action"]))
                     <h6>
                       R$ <?php echo $row["preco"]; ?>
                     </h6>
-                      <form method="post" action="index.php?action=add&id=<?php echo $row["id"]; ?>"> 
+                      <form method="post" action="cardapio.php?action=add&id=<?php echo $row["id"]; ?>"> 
                         <button style="background-color: Transparent; background-repeat:no-repeat; border: none; " type="submit" name="addcart" data-target="#add">
                             <span style="color: white; font-size: 1.5em;">+</span><!--<i class="fas fa-cart-plus" style="color: white; font-size: 1.5em;"></i>--></button>
                   </div>
@@ -262,7 +262,7 @@ if(isset($_GET["action"]))
   <!-- end food section -->
 
   <!-- footer section -->
-  <?php include 'includes/footer.php'?>
+  <?php include 'footer.php'?>
   <!-- footer section -->
 
   <!-- jQery -->

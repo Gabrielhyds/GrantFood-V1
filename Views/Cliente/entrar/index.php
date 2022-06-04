@@ -1,5 +1,5 @@
 <?php
-  include('../config/db.php');
+  include('../../../Banco/Conexao.php');
 
   $mesa = filter_input(INPUT_GET, 'mesa', FILTER_SANITIZE_NUMBER_INT);
 ?>
