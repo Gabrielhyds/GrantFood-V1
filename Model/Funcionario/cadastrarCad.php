@@ -7,7 +7,7 @@
  ob_start();
 
  //Incluir a conexao com BD
- include_once "../Conexao.php"; 
+ include_once "../../Banco/Conexao.php"; 
  
  //Receber os dados do formulario
  $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);

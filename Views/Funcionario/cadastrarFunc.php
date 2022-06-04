@@ -4,18 +4,20 @@
 session_start(); 
 
 // inclui o banco 
-include '../conexao.php';
+include '../../Banco/conexao.php';
 
 //verifica se a sessão usuario existe  
 
+/*
 if(!isset($_SESSION['usuario']))
   {
     //se não houver sessão ele redireciona para tela de login
     header("Location: ../../../index.php");
     exit;
 }
+*/
 
-include_once "foto/foto.php";
+include_once "foto.php";
 ?>
 <!doctype html>
 <html lang="en">
@@ -105,7 +107,7 @@ include_once "foto/foto.php";
         <!-- Pagina principal -->
       <div id="content" class="p-4 p-md-5 pt-5" style="background-color:#98C1D9; max-width:109%;overflow-x:hidden">
           <label class="mb-4" style="font-size: 40px; color: white; font-weight: bold; font-family: arial; background-color: #3D5A80; width: 109.9%; position: relative; bottom: 50px; right: 65px; padding-left: 70px; padding-top: 18px; padding-bottom: 18px; margin-right: -70px;">GERENCIAR USUÁRIOS</label>
-          <form method="POST" action="cadastrar/cadastrar.php" enctype="multipart/form-data">
+          <form method="POST" action="../../Model/Funcionario/cadastrarFunc.php" enctype="multipart/form-data">
             <div>
               <?php
                 if (isset($_SESSION['msg'])) {
@@ -297,16 +299,13 @@ include_once "foto/foto.php";
       </div>
     </div>
     <?php
-      include '../footer.php';    
+      include 'footer.php';    
     ?>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="cep.js"></script>
-
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="cadastrar/cep.js"></script>
+    <script src="../../Model/Funcionario/cepFunc.js"></script>
   </body>
 </html>

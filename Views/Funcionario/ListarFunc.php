@@ -1,20 +1,22 @@
 <?php
  // Conectando ao banco de dados:
- include_once("../../Conexao.php");
+ include_once("../../Banco/Conexao.php");
  // conexao ao banco de dados
 
 ?>
 <?php
 session_start(); //Iniciar a sessao
 ob_start();
+/*
 if(!isset($_SESSION['usuario']))
   {
     header("Location: ../../../index.php"); //alterar isso aq
     exit;
   }
-
+*/
 // inclui o arquivo foto.php para foto de perfil
-include "../foto/foto.php";
+
+//include "foto.php";
 
 ?>
 <!doctype html>
@@ -63,30 +65,27 @@ include "../foto/foto.php";
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
         <li >
-            <a href="../../index.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
+            <a href="statusMesa.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
           </li>
           <li class="active">
               <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-user-plus mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
               <ul class="collapse list-unstyled" id="userSubmenu">
                   <li>
-                      <a href="../index.php">Cadastrar Funcionário</a>
+                      <a href="cadastrarFunc.php">Cadastrar Funcionário</a>
                   </li>
                   <li>
-                      <a href="index.php">Consultar Funcionário</a>
+                      <a href="ListarFunc.php">Consultar Funcionário</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="../../RelatorioVendas/index.php"><span class="fa fa-file-text-o mr-3"></span>Relatorio de Vendas</a>
+            <a href="relatorioVendas.php"><span class="fa fa-file-text-o mr-3"></span>Relatorio de Vendas</a>
           </li>
           <li class="">
                     <a href="#cardapioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-tasks mr-3"></span>Cardápio<i class="icofont-rounded-down text-white"></i></a>
                     <ul class="collapse list-unstyled" id="cardapioSubmenu">
                         <li>
-                            <a href="../../cardapio/index.php">Cadastrar Produto</a>
-                        </li>
-                        <li>
-                            <a href="#">Cadastrar Categoria</a>
+                            <a href="cardapio.php">Cadastrar Produto</a>
                         </li>
                         <li>
                             <a href="#">Consultar Produto</a>
@@ -98,7 +97,7 @@ include "../foto/foto.php";
             <a href="#"><span class="fa fa-plus-circle mr-3"></span>Inserir</a>
           </li>
           <li>
-            <a href="../../sair.php"><span class="fa fa-sign-out mr-3"></span>Sair</a>
+            <a href="../../Controller/Funcionario/sair.php"><span class="fa fa-sign-out mr-3"></span>Sair</a>
           </li><br>
         </ul>
     	</nav>
@@ -116,7 +115,7 @@ include "../foto/foto.php";
               ?>
             </div>
               <div>
-              <?php $sql = "SELECT * FROM usuario"; $result = $conn->query($sql);?>
+              <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
               <table class="table alert alert-primary">
                 <thead>
                   <tr>
@@ -154,10 +153,10 @@ include "../foto/foto.php";
                     ?>
                     <td><?php echo $tipo;?></td>
                     <td> 
-                      <a href="..editar/editar.php?codigo=<?php echo $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                      <a href="../../Model/Funcionario/editarFunc.php?id=<?php echo $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>
                       </a> 
-                      <a href="../excluir/excluir.php?id=<?php echo $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                      <a href="../../Model/Funcionario/excluirFunc.php?id=<?php echo  $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                         <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
                       </a> 
@@ -175,7 +174,7 @@ include "../foto/foto.php";
       </div>
     </div>
     <?php
-      include '../../footer.php';    
+      include 'footer.php';    
     ?>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.js"></script>
