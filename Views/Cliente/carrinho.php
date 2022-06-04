@@ -192,12 +192,12 @@ if(isset($_GET["action"]))
                     ?>
                     <div class="row border-top border-bottom">
                         <div class="row main align-items-center">
-                            <div class="col-2"><img class="img-fluid" src="assets/images/food/<?php echo $values["item_name"] . ".png"; ?>"></div>
+                            <div class="col-2"><img class="img-fluid" src="../Funcionario/assets/images/food/<?php echo $values["item_imagem"] . ""; ?>"></div>
                             <div class="col">
                                 <div class="row text-muted"><?php echo $values["item_name"]; ?></div>
                             </div>
                             <div class="col"><a href="#" class="border"><?php echo $values["item_quantity"]; ?></a></div>
-                            <div class="col">R$ <?php echo $values["item_price"]; ?> <a href="index.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="close">&#10005;</span></a> </div>
+                            <div class="col">R$ <?php echo $values["item_price"]; ?> <a href="carrinho.php?action=delete&id=<?php echo $values["item_id"]; ?>"><span class="close">&#10005;</span></a> </div>
                         </div>
                     </div>
                     <?php

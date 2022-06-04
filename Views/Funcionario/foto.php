@@ -10,7 +10,8 @@ $sql = "SELECT foto FROM usuario WHERE usuario = '$usuario'";
 $result = $connection->query($sql);
 if ($result->num_rows > 0) {
    $row = $result->fetch_assoc();
+   $foto = $row['foto'];
   }
-$foto = $row['foto'];
+
 
 ?>

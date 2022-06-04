@@ -40,9 +40,9 @@ if(isset($_POST['update'])){
                               $item_quantity = $values["item_quantity"];
                               $item_price = $values["item_price"];
                               $item_total = $values["item_quantity"] * $values["item_price"];
-                              $item_id = $values["item_id"];
+                              $item_idProduto = $values["item_idProduto"];
 
-               $sql2 = "INSERT INTO pedidoitem (mesa, codPedido, sessao, item, quantidade, preco, total) VALUES ('$mesa', '$numero','$chave', '$item_nome', '$item_quantity', '$item_price', '$item_total')";    
+               $sql2 = "INSERT INTO pedidoitem (mesa, codPedido, sessao, item, quantidade, preco, total, idProduto) VALUES ('$mesa', '$numero','$chave', '$item_nome', '$item_quantity', '$item_price', '$item_total','$item_idProduto')";    
                $results2 = mysqli_query($connection, $sql2);     
                     }
 
