@@ -70,10 +70,10 @@ include_once "foto.php";
           <li class="active">
               <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-user-plus mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
               <ul class="collapse list-unstyled" id="userSubmenu">
-                  <li>
+                  <li >
                       <a href="cadastrarFunc.php">Cadastrar Funcionário</a>
                   </li>
-                  <li>
+                  <li >
                       <a href="ListarFunc.php">Consultar Funcionário</a>
                   </li>
               </ul>

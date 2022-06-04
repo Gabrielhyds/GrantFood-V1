@@ -1,13 +1,23 @@
 <?php
+// Conexao com o banco de dados:
+include_once("../../Banco/Conexao.php");
+
+//Iniciar a sessao
 session_start();
 
-/*
+//Limpar o buffer de saida
+ ob_start();
+
+//verifica se a sessão usuario existe  
 if(!isset($_SESSION['usuario']))
   {
-    header("Location: ../../../index.php"); //alterar isso aq
+    //se não houver sessão ele redireciona para tela de login
+    header("Location: ../Login/index.php");
     exit;
-  }
-*/
+}
+
+//inclui a foto do usuário
+include_once "foto.php";
 
 ?>
 <!doctype html>
@@ -51,8 +61,8 @@ if(!isset($_SESSION['usuario']))
         </div>
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bg_1.jpg);">
 	  			<div class="user-logo">
-	  				<div class="img" style="background-image: url(assets/images/bg.jpg);"></div>
-	  				<h3>Gerente</h3>
+            <img  class="img" src="assets/images/FotoPerfil/<?php  echo $foto?>" alt="">
+	  				<h3>Gerente: <?php echo @$_SESSION['usuario']?></h3>
 	  			</div>
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
