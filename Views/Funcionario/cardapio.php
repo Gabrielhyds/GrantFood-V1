@@ -154,7 +154,7 @@ include_once "foto.php";
                             <td><button class="btn btn-outline-success" type="button" id="button-addon1" style="background: red; border: 1px solid red; color: white; width: 150px" disabled><span class="texto">Categoria</span></button></td>
                             <td>
                               <select class="form-control" style="position: relative; top: 5px; left: 5px" required>
-                                <option value="">Selecione</option>  
+                                <option value="" disabled selected>Selecione</option>  
                                 <?php
                                     $result_categoria = "SELECT * FROM categoria";
                                     $resultado_categoria = mysqli_query($connection, $result_categoria);
