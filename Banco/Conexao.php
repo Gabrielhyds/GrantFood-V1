@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "HORTETEC_115";
+$pass = "";
 $dbname = "grantFood";
 try{
     $connPDO = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);

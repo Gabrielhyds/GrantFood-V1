@@ -1,10 +1,14 @@
 <?php
 session_start(); //Iniciar a sessao
+
+/*
 if(!isset($_SESSION['usuario']))
   {
     header("Location: ../../../index.php"); //alterar isso aq
     exit;
   }
+*/
+
 ?>
 <!doctype html>
 <html lang="en">

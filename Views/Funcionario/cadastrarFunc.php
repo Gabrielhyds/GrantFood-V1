@@ -8,12 +8,14 @@ include '../conexao.php';
 
 //verifica se a sessão usuario existe  
 
+/*
 if(!isset($_SESSION['usuario']))
   {
     //se não houver sessão ele redireciona para tela de login
     header("Location: ../../../index.php");
     exit;
 }
+*/
 
 include_once "foto/foto.php";
 ?>
