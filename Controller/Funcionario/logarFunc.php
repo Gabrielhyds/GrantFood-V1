@@ -14,14 +14,14 @@ if(isset($_POST['btnLogar'])){
         $_SESSION['senha'] = $_POST['senha'];
         $_SESSION['permissao'] = $_POST['permissao'];
         switch($permissao){
-            case 1:
-                header("Location:../../Views/Funcionario/statusMesa.php");
+            case 1: //gerente
+                header("Location:  ../../Views/Funcionario/statusMesa.php");
                 break;
-            case 2:
-                header("Location:../funcionario/Cozinha/view/index.php");
+            case 2: //garcom
+                header("Location: ../../Views/Funcionario/statusMesa.php");
                 break;
-            case 3:
-                header("Location:../funcionario/Garcom/view/index.php");
+            case 3: //cozinha
+                header("Location:../../Views/Funcionario/listarPedidos.php");
                 break;
             default:
                 header('Location:../../Views/Funcionario/statusMesa.php');
