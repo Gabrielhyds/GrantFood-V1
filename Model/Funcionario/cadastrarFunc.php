@@ -28,7 +28,7 @@
                 // Gera um nome único para a imagem
                 $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
                 // Caminho de onde ficará a imagem
-                $caminho_imagem = "../assets/images/FotoPerfil/" . $nome_imagem;
+                $caminho_imagem = "../../Views/Funcionario/images/FotoPerfil/" . $nome_imagem;
                 // Faz o upload da imagem para seu respectivo caminho
                 if(move_uploaded_file($foto["tmp_name"], $caminho_imagem)){
                     $query_usuario = "INSERT INTO usuario 
