@@ -152,9 +152,11 @@ create table pedidoitem(
    quantidade varchar(50) NOT NULL DEFAULT 0,
    preco double(10,2) NOT NULL,
    total varchar(50) NOT NULL DEFAULT 0,
+   idProduto INT(10) NOT NULL,
    foreign key(codPedido) references pedido(id),
    foreign key(mesa) references mesa(numero),
-   foreign key(sessao) references sessao(codSessao)
+   foreign key(sessao) references sessao(codSessao),
+   foreign key(idProduto) references produtos(id)
 );
 
 
