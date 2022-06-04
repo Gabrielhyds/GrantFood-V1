@@ -1,5 +1,5 @@
 <?php
-include('../config/db.php');
+include('../../Banco/Conexao.php');
 session_start();
 
 if(isset($_POST['finalizar'])){
@@ -15,9 +15,9 @@ if(isset($_POST['finalizar'])){
         $results2  = mysqli_query($connection, $sql2);
 
         if($results1 && $results2){
-        	header('Location: ../index.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=pago');
+        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=pago');
         }else{
-        	header('Location: ../index.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=erro');
+        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=erro');
         }
 
         

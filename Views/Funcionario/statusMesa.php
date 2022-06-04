@@ -1,5 +1,5 @@
 <?php
-  include('config/db.php');
+  include('../../Banco/Conexao.php');
   session_start();
   /*
   if(!isset($_SESSION['usuario']))
@@ -23,9 +23,6 @@
     <link rel="stylesheet" href="assets/css/cards.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   </head>
-  <style>
-    <?php include('includes/cards.php'); ?>
-  </style>
   <body>
 		
 		<div class="wrapper d-flex align-items-stretch">
@@ -45,7 +42,7 @@
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
           <li class="active">
-            <a href="index.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
+            <a href="statusMesa.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
           </li>
           <li>
               <a href="#"><span class="fa fa-tasks mr-3"></span> Cardápio</a>
