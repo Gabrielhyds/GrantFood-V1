@@ -16,14 +16,6 @@ create table usuario(
     dica varchar(50)
 );
 
-
-
-ALTER TABLE usuario modify tipo VARCHAR(15);
-DESC usuario
-INSERT INTO usuario (idFunc,nome,tipo,senha,usuario,genero,cpf,salario,cargaHoraria,ponto,dica) VALUES(1,"Gabriel",1,"123456","gabrielhyds","masculino","1234567890",1000.00,5,4,"Josefina");
-SELECT * FROM usuario WHERE usuario = 'gabrielhyds' && dica = 'josefina'
-
-DROP TABLE endereco,telefone,usuario;
 create table endereco(
     idEndereco int primary key auto_increment,
     cep CHAR(9),
@@ -37,8 +29,7 @@ create table endereco(
     foreign key(codEndereco) references usuario(idFunc)
 );
 INSERT INTO endereco (cep,logradouro,bairro,cidade,estado,complemento,codEndereco,numero) VALUES('13184556',"sebastina ramos","jd santana","hortolandia","sp","",1,49);
-SELECT * FROM endereco
-DELETE FROM `endereco`,`usuario`,`telefone` WHERE idEndereco = '5' && idFunc = '5' && id = '5'
+
 create table telefone(
     id int primary key auto_increment,
     ddd char(3),
@@ -49,7 +40,6 @@ create table telefone(
 );
 
 INSERT INTO telefone (ddd,telefone,tipo,codTelefone) VALUES('11','99999999','Residencial','1');
-SELECT * FROM telefone
 
 create table gastos(
     id int primary key auto_increment,
@@ -185,7 +175,7 @@ create table fechaConta(
     DATA DATETIME
 );
 
---cliente
+
 create  table avaliar(
     id int primary key auto_increment,
     qtdEstrela char(5),
@@ -197,7 +187,7 @@ create  table avaliar(
 select * from pedidoitem;
 SELECT * FROM pedido;
 SELECT * FROM sistema;
-SELECT id FROM pedidoite;
+SELECT id FROM pedidoitem;
 select * from mesa;
 select * from sessao;
 
