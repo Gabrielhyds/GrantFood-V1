@@ -1,13 +1,24 @@
 <?php
-session_start(); //Iniciar a sessao
 
-/*
+// Conexao com o banco de dados:
+include_once("../../Banco/Conexao.php");
+
+//Iniciar a sessao
+session_start();
+
+//Limpar o buffer de saida
+ ob_start();
+
+//verifica se a sessão usuario existe  
 if(!isset($_SESSION['usuario']))
   {
-    header("Location: ../../../index.php"); //alterar isso aq
+    //se não houver sessão ele redireciona para tela de login
+    header("Location: ../Login/index.php");
     exit;
-  }
-*/
+}
+
+//inclui a foto do usuário
+include_once "foto.php";
 
 ?>
 <!doctype html>
@@ -50,36 +61,33 @@ if(!isset($_SESSION['usuario']))
         </div>
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bg_1.jpg);">
 	  			<div class="user-logo">
-	  				<div class="img" style="background-image: url(assets/images/bg.jpg);"></div>
+            <img  class="img" src="assets/images/FotoPerfil/<?php  echo $foto?>" alt="foto">
 	  				<h3>Gerente: <?php echo @$_SESSION['usuario']?></h3>
 	  			</div>
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
         <li >
-            <a href="../index.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
+            <a href="statusMesa.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
           </li>
           <li class="">
               <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-user-plus mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
               <ul class="collapse list-unstyled" id="userSubmenu">
                   <li>
-                      <a href="../GerenciarUsuario/index.php">Cadastrar Funcionário</a>
+                      <a href="cadastrarFunc.php">Cadastrar Funcionário</a>
                   </li>
                   <li>
-                      <a href="../GerenciarUsuario/index.php">Consultar Funcionário</a>
+                      <a href="ListarFunc.php">Consultar Funcionário</a>
                   </li>
               </ul>
           </li>
           <li class="active">
-            <a href="index.php"><span class="fa fa-file-text-o mr-3"></span> Relatorio de Vendas</a>
+            <a href="relatorioVendas.php"><span class="fa fa-file-text-o mr-3"></span> Relatorio de Vendas</a>
           </li>
           <li class="">
                     <a href="#cardapioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-tasks mr-3"></span>Cardápio<i class="icofont-rounded-down text-white"></i></a>
                     <ul class="collapse list-unstyled" id="cardapioSubmenu">
                         <li>
-                            <a href="../cardapio/index.php">Cadastrar Produto</a>
-                        </li>
-                        <li>
-                            <a href="#">Cadastrar Categoria</a>
+                            <a href="cardapio.php">Cadastrar Produto</a>
                         </li>
                         <li>
                             <a href="#">Consultar Produto</a>
@@ -91,7 +99,7 @@ if(!isset($_SESSION['usuario']))
             <a href="#"><span class="fa fa-plus-circle mr-3"></span> Inserir</a>
           </li>
           <li>
-            <a href="../sair.php"><span class="fa fa-sign-out mr-3"></span> Sair</a>
+            <a href="../../Controller/Funcionario/sair.php"><span class="fa fa-sign-out mr-3"></span> Sair</a>
           </li><br>
         </ul>
     	</nav>
@@ -113,7 +121,7 @@ if(!isset($_SESSION['usuario']))
       </div>
     </div>
     <?php
-      include '../footer.php';
+      include 'footer.php';
     ?>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.js"></script>
