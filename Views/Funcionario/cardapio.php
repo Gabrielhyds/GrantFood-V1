@@ -143,7 +143,7 @@ include_once "foto.php";
                         <tr>
                         <div class="input-group mb-3"> 
                             <td><button class="btn btn-secondary" type="button" id="button-addon1"style="width: 150px" disabled><span class="texto">Descrição</span></button></td>
-                            <td><input type="text" class="form-control" placeholder="" name="descricao"  aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px"  required></td>
+                            <td><input type="text" class="form-control" placeholder="" name="descricao"  aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px" ></td>
                             <td></td>
                         </div>
                         </tr>
@@ -154,12 +154,12 @@ include_once "foto.php";
                             <td><button class="btn btn-outline-success" type="button" id="button-addon1" style="background: red; border: 1px solid red; color: white; width: 150px" disabled><span class="texto">Categoria</span></button></td>
                             <td>
                               <select class="form-control" style="position: relative; top: 5px; left: 5px" name="categoria" required>
-                                <option value="" disabled selected>Selecione</option>  
+                              <option value="" disabled selected>Selecione</option>  
                                 <?php
                                     $result_categoria = "SELECT * FROM categoria";
                                     $resultado_categoria = mysqli_query($connection, $result_categoria);
                                     while($row_categoria = mysqli_fetch_assoc($resultado_categoria)){ ?>
-                                      <option value="<?php echo $row_categoria['nome']; ?>"><?php echo $row_categoria['nome']; ?></option> <?php
+                                      <option value="<?php echo $row_categoria['id']; ?>"><?php echo $row_categoria['nomeCat']; ?></option> <?php
                                     }
                                   ?>
                               </select>

@@ -105,12 +105,12 @@ create table produtos(
 	FOREIGN KEY(categoria_id) REFERENCES categoria(id)
 );
 
-DROP TABLE produtos;
 
 CREATE TABLE categoria(
 	id INT(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(100)
+	nomeCat VARCHAR(100)
 );
+
 
 insert INTO PRODUTOS VALUES (1,'Batata', 'batata e creme', 'Batata.png', 24.00, 'fries');
 insert INTO PRODUTOS VALUES (2,'Pizza Frango', 'frango', 'Pizza Frango.png', 55.00, 'pizza');
