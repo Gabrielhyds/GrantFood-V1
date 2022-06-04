@@ -117,43 +117,31 @@ include_once "foto.php";
               ?>
             </div>
               <div>
-              <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
+              <?php $sql = "SELECT * FROM produtos"; $result = $connection->query($sql);?>
               <table class="table alert alert-primary">
                 <thead>
                   <tr>
-                    <td colspan="6"><h4 class="alert-heading">Funcionários cadastrados no sistema</h4><hr></td>
+                    <td colspan="6"><h4 class="alert-heading">Produtos cadastrados no sistema</h4><hr></td>
                   </tr>
                     <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Usuário</th>
-                    <th scope="col">Salário</th>
-                    <th scope="col">Permissão</th>
+                    <th scope="col">Descricao</th>
+                    <th scope="col">imagem</th>
+                    <th scope="col">preço</th>
+                    <th scope="col">Categoria</th>
                     <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
                 <tbody>
                     <tr>
-                    <th scope="row"><?php echo $row["idFunc"]; ?></th>
+                    <th scope="row"><?php echo $row["id"]; ?></th>
                     <td><?php echo $row["nome"]; ?></td>
-                    <td><?php echo $row["usuario"]; ?></td>
-                    <td><?php echo $row["salario"]; ?></td>
-                    <?php
-                    
-                      switch($row['tipo']){
-                        case 1:
-                          $tipo = 'Gerente';
-                          break;
-                        case 2:
-                          $tipo = "Garçom";
-                          break;
-                        case 3:
-                          $tipo = "Cozinha";
-                          break;
-                      }
-                    ?>
-                    <td><?php echo $tipo;?></td>
+                    <td><?php echo $row["descricao"]; ?></td>
+                    <td><?php echo $row["image"]; ?></td>
+                    <td><?php echo $row["preco"]; ?></td>
+                    <td><?php echo $row["categoria"]; ?></td>
                     <td> 
                       <a href="../../Model/Funcionario/editarFunc.php?id=<?php echo $row['idFunc']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
                         <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>

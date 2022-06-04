@@ -93,7 +93,7 @@ include_once "foto.php";
                         </li>
                         <!--criar cadastrar categoria no cadastrar produto-->
                         <li>
-                            <a href="#">Consultar Produto</a>
+                            <a href="listarCad.php">Consultar Produto</a>
                         </li>
                     </ul>
                 </li>

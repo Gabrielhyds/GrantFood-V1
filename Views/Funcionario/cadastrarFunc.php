@@ -88,7 +88,7 @@ include_once "foto.php";
                             <a href="cardapio.php">Cadastrar Produto</a>
                         </li>
                         <li>
-                            <a href="#">Consultar Produto</a>
+                            <a href="listarCad.php">Consultar Produto</a>
                         </li>
                     </ul>
                 </li>
