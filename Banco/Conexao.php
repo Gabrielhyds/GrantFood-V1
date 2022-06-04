@@ -1,8 +1,8 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "grantFood";
+$host = "sql549.main-hosting.eu";
+$user = "u738986880_geral";
+$pass = "Teste1234";
+$dbname = "u738986880_grantFood";
 try{
     $connPDO = new PDO("mysql:host=$host;dbname=" . $dbname, $user, $pass);
     $connection = mysqli_connect($host, $user, $pass, $dbname);
