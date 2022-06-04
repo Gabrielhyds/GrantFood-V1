@@ -48,6 +48,7 @@ if(isset($_POST["addcart"]))
       'item_quantity'   =>  $_POST["quantidade"]
     );
     $_SESSION["shopping_cart"][0] = $item_array;
+    echo '<script>alert("Item adicionado")</script>';
   }
 }
 
