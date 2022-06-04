@@ -117,14 +117,13 @@ include_once "foto.php";
               ?>
             </div>
               <div>
-              <?php $sql = "SELECT * FROM produtos INNER JOIN categoria ON produtos.id=categoria.id"; $result = $connection->query($sql);?>
+              <?php $sql = "SELECT * FROM produtos INNER JOIN categoria "; $result = $connection->query($sql);?>
               <table class="table alert alert-primary">
                 <thead>
                   <tr>
-                    <td colspan="6"><h4 class="alert-heading">Produtos cadastrados no sistema</h4><hr></td>
+                    <td colspan="7"><h4 class="alert-heading">Produtos cadastrados no sistema</h4><hr></td>
                   </tr>
                     <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Descricao</th>
                     <th scope="col">imagem</th>
@@ -136,7 +135,6 @@ include_once "foto.php";
                 <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
                 <tbody>
                     <tr>
-                    <th scope="row"><?php echo $row["id"]; ?></th>
                     <td><?php echo $row["nome"]; ?></td>
                     <td><?php echo $row["descricao"]; ?></td>
                     <td><?php echo $row["image"]; ?></td>

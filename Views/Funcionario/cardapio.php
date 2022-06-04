@@ -143,7 +143,7 @@ include_once "foto.php";
                         <tr>
                         <div class="input-group mb-3"> 
                             <td><button class="btn btn-secondary" type="button" id="button-addon1"style="width: 150px" disabled><span class="texto">Descrição</span></button></td>
-                            <td><input type="text" class="form-control" placeholder="" name="descricao"  aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px"  required></td>
+                            <td><input type="text" class="form-control" placeholder="" name="descricao"  aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px" ></td>
                             <td></td>
                         </div>
                         </tr>
