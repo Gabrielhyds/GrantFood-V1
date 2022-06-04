@@ -1,22 +1,24 @@
 <?php
- // Conectando ao banco de dados:
- include_once("../../Banco/Conexao.php");
- // conexao ao banco de dados
 
-?>
-<?php
-session_start(); //Iniciar a sessao
-ob_start();
-/*
+// Conexao com o banco de dados:
+include_once("../../Banco/Conexao.php");
+
+//Iniciar a sessao
+session_start();
+
+//Limpar o buffer de saida
+ ob_start();
+
+//verifica se a sessão usuario existe  
 if(!isset($_SESSION['usuario']))
   {
-    header("Location: ../../../index.php"); //alterar isso aq
+    //se não houver sessão ele redireciona para tela de login
+    header("Location: ../Login/index.php");
     exit;
-  }
-*/
-// inclui o arquivo foto.php para foto de perfil
+}
 
-//include "foto.php";
+//inclui a foto do usuário
+include_once "foto.php";
 
 ?>
 <!doctype html>
