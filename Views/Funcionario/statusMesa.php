@@ -10,15 +10,21 @@ session_start();
  ob_start();
 
 //verifica se a sessão usuario existe  
+<<<<<<< HEAD
+
+
+/*if(!isset($_SESSION['usuario']))
+=======
 if(!isset($_SESSION['usuario']))
+>>>>>>> e3a93c739238af1d39ede76a7aeadd4834e8773f
   {
     //se não houver sessão ele redireciona para tela de login
     header("Location: ../Login/index.php");
     exit;
-}
+}*/
 
 //inclui a foto do usuário
-include_once "foto.php";
+//include_once "foto.php";
 
 ?>
 <!doctype html>
@@ -32,6 +38,9 @@ include_once "foto.php";
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/cards.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
   </head>
   <body>
 	<div class="wrapper d-flex align-items-stretch">
@@ -45,8 +54,8 @@ include_once "foto.php";
         </div>
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bg_1.jpg);">
 	  			<div class="user-logo">
-            <img  class="img" src="assets/images/FotoPerfil/<?php  echo $foto?>" alt="foto">
-	  				<h3>Gerente: <?php echo @$_SESSION['usuario']?></h3>
+            <img  class="img" src="assets/images/FotoPerfil/<?php  //echo $foto?>" alt="foto">
+	  				<h3>Gerente: <?php // ARRUMAR echo @$_SESSION['usuario']?></h3>
 	  			</div>
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
@@ -122,13 +131,11 @@ include_once "foto.php";
       include 'footer.php';    
     ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="cep.js"></script>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="cadastrar/cep.js"></script>
   </body>
 </html>
