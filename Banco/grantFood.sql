@@ -13,9 +13,11 @@ create table usuario(
     salario decimal(7,2),
     cargaHoraria int , 
     ponto varchar(15),
-    dica varchar(50)
+    dica varchar(50),
+    foto VARCHAR(255)
 );
 
+SELECT * FROM usuario;
 create table endereco(
     idEndereco int primary key auto_increment,
     cep CHAR(9),
@@ -28,6 +30,7 @@ create table endereco(
     numero INT,
     foreign key(codEndereco) references usuario(idFunc)
 );
+
 INSERT INTO endereco (cep,logradouro,bairro,cidade,estado,complemento,codEndereco,numero) VALUES('13184556',"sebastina ramos","jd santana","hortolandia","sp","",1,49);
 
 create table telefone(
@@ -98,7 +101,15 @@ create table produtos(
 	descricao varchar(255) DEFAULT NULL,
 	image varchar(255) NOT NULL,
 	preco double(10,2) NOT NULL,
-	categoria varchar(233) NOT NULL
+	categoria_id int,
+	FOREIGN KEY(categoria_id) REFERENCES categoria(id)
+);
+
+DROP TABLE produtos;
+
+CREATE TABLE categoria(
+	id INT(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(100)
 );
 
 insert INTO PRODUTOS VALUES (1,'Batata', 'batata e creme', 'Batata.png', 24.00, 'fries');

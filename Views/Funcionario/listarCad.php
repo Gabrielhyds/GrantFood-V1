@@ -69,7 +69,7 @@ include_once "foto.php";
         <li >
             <a href="statusMesa.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
           </li>
-          <li class="active">
+          <li >
               <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-user-plus mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
               <ul class="collapse list-unstyled" id="userSubmenu">
                   <li>
@@ -83,7 +83,7 @@ include_once "foto.php";
           <li>
             <a href="relatorioVendas.php"><span class="fa fa-file-text-o mr-3"></span>Relatorio de Vendas</a>
           </li>
-          <li class="">
+          <li class="active">
                     <a href="#cardapioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-tasks mr-3"></span>Cardápio<i class="icofont-rounded-down text-white"></i></a>
                     <ul class="collapse list-unstyled" id="cardapioSubmenu">
                         <li>
