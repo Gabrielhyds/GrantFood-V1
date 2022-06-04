@@ -1,5 +1,5 @@
 <?php
-include('../config/db.php');
+include('../../Banco/Conexao.php');
 session_start();
 
 if(isset($_POST['alterar'])){
@@ -12,13 +12,13 @@ if(isset($_POST['alterar'])){
         $results1  = mysqli_query($connection, $sql);
 
         if($results1){
-        	header('Location: ../index.php?telas=vermesa&idMesa='. $idMesa .'');
+        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'');
         }else{
-        	header('Location: ../index.php?telas=vermesa&idMesa='. $idMesa .'&status=erro');
+        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&status=erro');
         }
 
         
     }else{
-    	header('Location: ../index.php?telas=vermesa&idMesa='. $idMesa .'&erro=metodo');
+    	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&erro=metodo');
     }
 }

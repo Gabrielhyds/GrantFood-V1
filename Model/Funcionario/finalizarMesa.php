@@ -1,5 +1,5 @@
 <?php
-include('../config/db.php');
+include('../../Banco/Conexao.php');
 session_start();
 
 if(isset($_POST['finalizar'])){
@@ -17,13 +17,13 @@ if(isset($_POST['finalizar'])){
         $results4  = mysqli_query($connection, $sql4);
 
         if($results1 && $results2 && $results3 && $results4){
-        	header('Location: ../index.php?status=mesaonline');
+        	header('Location: ../../Views/Funcionario/statusMesa.php?status=mesaonline');
         }else{
-        	header('Location: ../index.php?telas=vermesa&idMesa='. $idMesa .'&status=erro');
+        	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&status=erro');
         }
 
         
     }else{
-    	header('Location: ../index.php?telas=vermesa&idMesa='. $idMesa .'&erro=metodo');
+    	header('Location: ../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa='. $idMesa .'&erro=metodo');
     }
 }
