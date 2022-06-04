@@ -32,7 +32,9 @@
             <form action="../../Model/Funcionario/finalizarMesa.php" method="POST">
                 <input type="hidden" name="mesa" value="<?php echo $idMesa?>">
                 <button type="submit" name="finalizar" class="btn btn-danger">Finalizar mesa</button>
+                <button type="button"  onclick="window.location.href='statusMesa.php?telas=baixarQR&idMesa=<?php echo $idMesa;?>'" class="btn btn-success">Baixar QRCode</button>
             </form>
+            
         </div>
     </div>
     <br>

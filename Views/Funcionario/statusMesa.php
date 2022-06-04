@@ -104,6 +104,12 @@ include_once "foto.php";
             if($_GET["telas"] == "addmesa"){
               require_once ('includes/addmesa.php');
             }
+            if($_GET["telas"] == "removemesa"){
+              require_once ('includes/removemesa.php');
+            }
+            if($_GET["telas"] == "baixarQR"){
+              require_once ('includes/baixarQR.php');
+            }
           }else{
             require_once ('includes/principal.php');
           }
