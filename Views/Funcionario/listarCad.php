@@ -117,7 +117,9 @@ include_once "foto.php";
               ?>
             </div>
               <div>
-              <?php $sql = "SELECT * FROM produtos INNER JOIN categoria "; $result = $connection->query($sql);?>
+              <?php $sql = "SELECT  prod.id, prod.nome, prod.descricao,prod.image,prod.preco,categ.nomeCat 
+                    FROM produtos AS prod
+                    LEFT JOIN categoria AS categ ON prod.categoria_id=categ.id;"; $result = $connection->query($sql);?>
               <table class="table alert alert-primary">
                 <thead>
                   <tr>
