@@ -55,16 +55,16 @@ include_once "foto.php";
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
         <li class="active">
-            <a href="statusMesa.php"><span class="fa fa-user-plus mr-3"></span>Status das Mesas</a>
+            <a href="statusMesa.php"><span class="fa fa-table mr-3"></span>Status das Mesas</a>
           </li>
           <li>
-              <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-user-plus mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
+              <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-users mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
               <ul class="collapse list-unstyled" id="userSubmenu">
                   <li>
-                      <a href="cadastrarFunc.php">Cadastrar Funcionário</a>
+                      <a href="cadastrarFunc.php"><span class="fa fa-user-plus mr-3"></span>Cadastrar Funcionário</a>
                   </li>
                   <li>
-                      <a href="ListarFunc.php">Consultar Funcionário</a>
+                      <a href="ListarFunc.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Funcionário</a></a>
                   </li>
               </ul>
           </li>
@@ -72,13 +72,13 @@ include_once "foto.php";
             <a href="relatorioVendas.php"><span class="fa fa-file-text-o mr-3"></span>Relatorio de Vendas</a>
           </li>
           <li class="">
-                    <a href="#cardapioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-tasks mr-3"></span>Cardápio<i class="icofont-rounded-down text-white"></i></a>
+                    <a href="#cardapioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-cart-plus mr-3"></span>Cardápio<i class="icofont-rounded-down text-white"></i></a>
                     <ul class="collapse list-unstyled" id="cardapioSubmenu">
                         <li>
-                            <a href="cardapio.php">Cadastrar Produto</a>
+                            <a href="cardapio.php"><span class="fa fa-apple mr-3" aria-hidden="true"></span>Cadastrar Produto</a>
                         </li>
                         <li>
-                            <a href="listarCad.php">Consultar Produto</a>
+                            <a href="listarCad.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Produto</a>
                         </li>
                     </ul>
                 </li>
