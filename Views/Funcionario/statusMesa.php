@@ -31,7 +31,12 @@ include_once "foto.php";
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" style="font-size:100px"/>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		
+		<?php
+    if(!isset($_GET['telas'])){
+      echo "<meta HTTP-EQUIV='refresh' CONTENT='20'>";
+    }
+      
+    ?>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/cards.css">
