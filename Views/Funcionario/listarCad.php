@@ -158,7 +158,7 @@ include_once "foto.php";
                                       </div>';} ?> 
                 </table>
               </div>
-            </form>
+            </form><br><br>
           </div>  
         </div>
       </div>
