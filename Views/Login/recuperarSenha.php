@@ -1,6 +1,15 @@
 <?php
-    require_once "../../Banco/Conexao.php";
-    session_start();
+// Conexao com o banco de dados:
+include_once("../../Banco/Conexao.php");
+
+//Iniciar a sessao
+session_start();
+
+//Limpar o buffer de saida
+ ob_start();
+
+//inclui a foto do usuário
+include_once "../Funcionario/foto.php";
 
 ?>
 <!doctype html>
@@ -31,7 +40,7 @@
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap py-5" style="background-color: 3D5A80;">
 					<h3 class="text-center mb-0"><b style="font-size: 25px">Nova Senha</b></h3><br>
-		      	<div class="img d-flex align-items-center justify-content-center" style="background-image: url(assetsLogin/images/bg.jpg);"></div>
+					<img  class="img d-flex align-items-center justify-content-center" src="../Funcionario/assets/images/FotoPerfil/<?php echo $foto?>" alt="">
 		      	<p class="text-center" style="color: white">Digite a nova senha</p>
 						<form class="login-form" method="POST" name="formulario">
 	            <div class="form-group">
@@ -39,7 +48,7 @@
 	              <input type="password" name="senha" class="form-control" placeholder="Senha" required>
 	            </div>
                 <div class="form-group">
-	            	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
+	            	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-check-circle"></span></div>
 	              <input type="password" name="confirma_senha" class="form-control" placeholder="Confirma Senha" required>
 	            </div>
 	            <div class="form-group">

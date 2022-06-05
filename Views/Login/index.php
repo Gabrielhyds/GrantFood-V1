@@ -54,7 +54,7 @@
 					</div>
 	            </div>
 	            <div class="form-group">
-	            	<button type="submit" name="btnLogar" class="btn form-control rounded submit px-3" style="background-color: FF3A0B; font-size: 20px">Entrar</button>
+	            	<button type="submit" name="btnLogar" class="btn form-control rounded submit px-3" style="background-color: FF3A0B; font-size: 20px"><span class="fa fa-sign-in mr-2" aria-hidden="true"></span>Entrar</button>
 	            </div>
 
 	          </form>
