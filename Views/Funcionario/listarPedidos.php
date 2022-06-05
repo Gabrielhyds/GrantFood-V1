@@ -50,9 +50,9 @@ include_once "foto.php";
 	        </button>
         </div>
         <div class="imagem"> 
-          <img src="assets/images/LogoS.png" alt="">
+          <img src="assets/images/Logo.png" alt="" style="margin-top:-10px;margin-bottom:5px;width:185px;height:130px;margin-left:55px"> 
         </div>
-	  		<div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bg_1.jpg);">
+	  		<div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bg_2.jpg);">
 	  			<div class="user-logo">
             <img  class="img" src="assets/images/FotoPerfil/<?php  echo $foto?>" alt="foto">
 	  				<h3>Cozinha: <?php echo @$_SESSION['usuario']?></h3>
