@@ -8,7 +8,7 @@ if(isset($_POST['finalizar'])){
     $metodo =    $_POST['metodo'];
 
     if(!empty($idPedido)){
-    	$sql = "INSERT INTO fechaConta (codPedido, formaPagamento, data) VALUES ('$idPedido', '$metodo', NOW())";
+    	$sql = "INSERT INTO fechaconta (codPedido, formaPagamento, data) VALUES ('$idPedido', '$metodo', NOW())";
         $results1  = mysqli_query($connection, $sql);
 
         $sql2 = "UPDATE pedido SET status = 'Finalizado' WHERE id = '$idPedido'";
@@ -22,7 +22,7 @@ if(isset($_POST['finalizar'])){
 
         
     }else{
-    	header('Location: ../index.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&erro=metodo');
+    	header('Location: .../../Views/Funcionario/statusMesa.php?telas=pagarindi&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&erro=metodo');
     }
 }
 
@@ -42,11 +42,11 @@ if(isset($_POST['geral'])){
 
                if($results2 && $results3){
                 unset($_SESSION["ids"]);
-                header('Location: ../index.php?telas=pagartudo&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=pago');
+                header('Location: ../../Views/Funcionario/statusMesa.php?telas=pagartudo&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=pago');
                }    
         }
     }else{
-        header('Location: ../index.php?telas=pagartudo&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=vazio');
+        header('Location: ../../Views/Funcionario/statusMesa.php?telas=pagartudo&idMesa='. $idMesa .'&idPedido=' . $idPedido .'&status=vazio');
     }
 
     

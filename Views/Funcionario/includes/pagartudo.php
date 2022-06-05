@@ -161,7 +161,7 @@
                             <h5 class="card-title ">Dados de pagamento</h5>
                             </div>
                             <div class="row">
-                                <form action="processar/fecharConta.php" method="POST">
+                                <form action="../../Model/Funcionario/fecharConta.php" method="POST">
                                     <select class="form-select" name="metodo" aria-label="Default select example">
                                     <option value="0">Método de pagamento...</option>
                                       <option value="dinheiro">Dinheiro</option>

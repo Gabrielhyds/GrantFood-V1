@@ -101,7 +101,7 @@
                                   <p class="mb-0"><b>Lembre-se de que finalizar o pedido, não finaliza a mesa.</b></p>
                                 </div>
                                 <div class="text-center">
-                                    <a href="index.php?telas=vermesa&idMesa=<?php echo $idMesa;?>" class="btn btn-primary">Voltar</a>
+                                    <a href="../../Views/Funcionario/statusMesa.php?telas=vermesa&idMesa=<?php echo $idMesa;?>" class="btn btn-primary">Voltar</a>
                                 </div>
                                 <?php
                             }else if($_GET["status"] == "erro"){
@@ -140,13 +140,14 @@
                     ?>
 
 
-            </div>
+            
             <br>
           <?php
               }
             }
           ?>
-
+            </div>
+            </div>
     </div>
             
 <?php
