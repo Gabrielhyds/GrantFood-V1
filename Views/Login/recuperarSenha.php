@@ -40,7 +40,12 @@ include_once "../Funcionario/foto.php";
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap py-5" style="background-color: 3D5A80;">
 					<h3 class="text-center mb-0"><b style="font-size: 25px">Nova Senha</b></h3><br>
-					<img  class="img d-flex align-items-center justify-content-center" src="../Funcionario/assets/images/FotoPerfil/<?php echo $foto?>" alt="">
+					<?php
+					if (!is_null($foto)){ ?>
+					<img  class="img d-flex align-items-center justify-content-center" src="../Funcionario/assets/images/FotoPerfil/<?php echo $foto ?>" alt="">
+					<?php }else{ ?>
+						<img  class="img d-flex align-items-center justify-content-center" src="../Funcionario/assets/images/bg.jpg" alt="">
+					<?php }?>
 		      	<p class="text-center" style="color: white">Digite a nova senha</p>
 						<form class="login-form" method="POST" name="formulario">
 	            <div class="form-group">
