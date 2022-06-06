@@ -8,22 +8,33 @@ session_start();
 
 //Limpar o buffer de saida
  ob_start();
- 
+
+//verifica se a sessão usuario existe  
+if(!isset($_SESSION['usuario']))
+  {
+    //se não houver sessão ele redireciona para tela de login
+    header("Location: ../Login/index.php");
+    exit;
+}
+
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
+// query select que retorna todos os dados do usuario onde o idfunc for igual a $id
 $result_usuario = "SELECT * FROM usuario WHERE idFunc = '$id'";
 $resultado_usuario = mysqli_query($connection, $result_usuario);
 $row_usuario = mysqli_fetch_assoc($resultado_usuario);
 
+// query select que retorna todos os dados referente o endereco do usuario onde o codEndereco for igual a $id
 $result_endereco = "SELECT * FROM endereco WHERE codEndereco = '$id'";
 $resultado_endereco = mysqli_query($connection, $result_endereco);
 $row_endereco = mysqli_fetch_assoc($resultado_endereco);
 
+// query select que retorna todos os dados referente o telefone do usuario onde o codTelefone for igual a $id
 $result_telefone = "SELECT * FROM telefone WHERE codTelefone = '$id'";
 $resultado_telefone = mysqli_query($connection, $result_telefone);
 $row_telefone = mysqli_fetch_assoc($resultado_telefone);
 
-
+//inclui a foto de perfil do usuário
 include 'foto.php';
 
 
@@ -100,6 +111,9 @@ include 'foto.php';
                         <li>
                             <a href="listarCad.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Produto</a>
                         </li>
+                        <li>
+                            <a href="listarCateg.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Categoria</a>
+                        </li>
                     </ul>
                 </li>
           <li>
@@ -146,7 +160,7 @@ include 'foto.php';
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputAddress2">Senha</label>
-                <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" required value="<?php echo $row_usuario['senha'];?>">
+                <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" required >
               </div>
               <div class="form-group col-md-6">
                 <label for="inputAddress2">Confirma Senha</label>
@@ -161,7 +175,7 @@ include 'foto.php';
 
               <div class="form-group col-md-4">
                 <label for="dica">Foto de perfil</label>
-                <input type="file" class="form-control" name="imagem" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"  aria-label="Upload">
+                <input type="file" class="form-control" name="imagem" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"   aria-label="Upload">
               </div>
 
               <div class="form-group col-md-4">

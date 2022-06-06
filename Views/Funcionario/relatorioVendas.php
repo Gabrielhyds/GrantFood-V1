@@ -91,6 +91,9 @@ include_once "foto.php";
                         <li>
                             <a href="listarCad.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Produto</a>
                         </li>
+                        <li>
+                            <a href="listarCateg.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Categoria</a>
+                        </li>
                     </ul>
                 </li>
 

@@ -16,6 +16,7 @@ var_dump($dados);
 if(isset($dados['btnCadastrar'])){
     $categoria = $_POST['categoria'];
     $foto = $_FILES['imagem'];
+    $_SESSION['foto'] = $foto;
     $error = array();
     // Verifica se o arquivo é uma imagem
     if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){

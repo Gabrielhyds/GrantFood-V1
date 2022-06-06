@@ -1,4 +1,5 @@
 <?php
+
 // Conexao com o banco de dados:
 include_once("../../Banco/Conexao.php");
 
@@ -16,8 +17,18 @@ if(!isset($_SESSION['usuario']))
     exit;
 }
 
-//inclui a foto do usuário
-include_once "foto.php";
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+// query select que retorna todos os dados do usuario onde o idfunc for igual a $id
+$result_produto = "SELECT * FROM produtos WHERE id = $id;";
+$resultado_produto = mysqli_query($connection, $result_produto);
+$row_produto = mysqli_fetch_assoc($resultado_produto);
+
+
+
+//inclui a foto de perfil do usuário
+include 'foto.php';
+
 
 ?>
 <!doctype html>
@@ -128,17 +139,17 @@ include_once "foto.php";
                         }
                       ?>
                     </div>
-              <form action="../../Model/Funcionario/cadastrarCad.php" method="POST" enctype="multipart/form-data">
+              <form action="../../Model/Funcionario/editarCad.php" method="POST" enctype="multipart/form-data">
                 <fieldset class="scheduler-border" style="border: 1px solid #3D5A80; border-radius: 4px;">
                   <legend class="scheduler-border" style="background: #3D5A80; border-radius: 4px"><span style="padding-left: 21px">Adicionar ao cardápio</span></legend>
                     <div class="control-group">
                         <table style="position: relative; bottom: 70px;">
                         <!--Produto-->
-                        
+                        <input type="hidden" name="id" value="<?php echo $row_produto['id']; ?>">
                         <tr>
                         <div class="input-group mb-3">
                             <td><button class="btn btn-primary" type="button" id="button-addon1" style="width: 150px" disabled><span class="texto">Produto</span></button></td>
-                            <td><input type="text" class="form-control" placeholder="" name="nome" aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px; width: 420px" required></td>
+                            <td><input type="text" class="form-control" placeholder="" name="nome" value="<?php echo $row_produto['nome'];?>" aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px; width: 420px" required></td>
                         </div>
                         </tr>
 
@@ -146,7 +157,7 @@ include_once "foto.php";
                         <tr>
                         <div class="input-group mb-3"> 
                             <td><button class="btn btn-secondary" type="button" id="button-addon1"style="width: 150px" disabled><span class="texto">Descrição</span></button></td>
-                            <td><input type="text" class="form-control" placeholder="" name="descricao"  aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px" ></td>
+                            <td><input type="text" class="form-control" placeholder="" name="descricao"  value="<?php echo $row_produto['descricao'];?>" aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px" ></td>
                             <td></td>
                         </div>
                         </tr>
@@ -156,8 +167,17 @@ include_once "foto.php";
                         <div class="input-group mb-3">
                             <td><button class="btn btn-outline-success" type="button" id="button-addon1" style="background: red; border: 1px solid red; color: white; width: 150px" disabled><span class="texto">Categoria</span></button></td>
                             <td>
+                            <!--corrigir o editar categoria-->
                               <select class="form-control" style="position: relative; top: 5px; left: 5px" name="categoria" required>
-                              <option value="" disabled selected>Selecione</option>  
+                              <?php
+                                    $result_categoria = "SELECT prod.id,categ.nomeCat 
+                                    FROM produtos AS prod
+                                    LEFT JOIN categoria AS categ ON prod.categoria_id=categ.id where prod.id = $id;";
+                                    $resultado_categoria = mysqli_query($connection, $result_categoria);
+                                    while($row_categoria = mysqli_fetch_assoc($resultado_categoria)){ ?>
+                                      <option value="<?php echo $row_categoria['id']; ?>" disabled selected><?php echo $row_categoria['nomeCat']; ?></option> <?php
+                                    }
+                                  ?>
                                 <?php
                                     $result_categoria = "SELECT * FROM categoria";
                                     $resultado_categoria = mysqli_query($connection, $result_categoria);
@@ -182,7 +202,7 @@ include_once "foto.php";
                         <tr>
                         <div class="input-group mb-3">
                             <td><button class="btn btn-outline-success" type="button" id="button-addon1"  style="background-color: green; color: white; width: 150px" disabled><span class="texto">Preço</span></button></td>
-                            <td><input type="number" class="form-control" placeholder="" name="preco" aria-label="Example text with button addon" aria-describedby="button-addon1" style="width: 150px; position: relative; top: 5px; left: 5px"  required></td>
+                            <td><input type="number" class="form-control" placeholder="" value="<?php echo $row_produto['preco']?>" name="preco" aria-label="Example text with button addon" aria-describedby="button-addon1" style="width: 150px; position: relative; top: 5px; left: 5px"  required></td>
                             <td style="position: relative; top: 5px; right: 300px; color: black;">R$</td>
                         </div>
                         </tr>
@@ -190,10 +210,7 @@ include_once "foto.php";
                           <!--Inserir e Remover-->
                           <tr>
                             <div class="btn" >
-                              <td style="position: relative;  top: 20px"><button type="submit" name="btnCadastrar" class="btn btn-success" style="font-family: arial; font-weight: bold"><span class="fa fa-plus mr-1"></span>Adicionar</button>
-                            </div>
-                            <div class="btnExcluir" style="position: relative; left: 150px; bottom: 58px">
-                              <button type="reset" name="btnLimpar" class="btn btn-danger" style="font-family: arial; font-weight: bold"><span class="fa fa-trash mr-1"></span>Limpar</button></td>
+                              <td style="position: relative;  top: 20px"><button type="submit" name="btnAtualizar" class="btn btn-success" style="font-family: arial; font-weight: bold"><span class="fa fa-plus mr-1"></span>Atualizar</button>
                             </div>
                           </tr>
                         </table>
@@ -201,31 +218,7 @@ include_once "foto.php";
                 </fieldset>
               </form>
 
-              <form action="../../Model/Funcionario/cadCategoria.php" method="POST" enctype="multipart/form-data">
-                <fieldset class="scheduler-border" style="border: 1px solid #3D5A80; border-radius: 4px;">
-                  <legend class="scheduler-border" style="background: #3D5A80; border-radius: 4px"><span style="padding-left: 21px">Adicione a categoria</span></legend>
-                    <div class="control-group">
-                      <table style="position: relative; ">
-                        <!--nome da categoria-->
-                        <tr>
-                        <div class="input-group mb-3">
-                            <td><button class="btn btn-primary" type="button" id="button-addon1" style="width: 200px" disabled><span class="texto">Categoria</span></button></td>
-                            <td><input type="text" class="form-control" placeholder="" name="nome" aria-label="Example text with button addon" aria-describedby="button-addon1" style="position: relative; top: 5px; left: 5px; width: 420px" required></td>
-                        </div>
-                        </tr>
-                          <!-- btn Inserir e Remover-->
-                          <tr>
-                            <div class="btn" >
-                              <td style="position: relative;  top: 20px"><button type="submit" name="btnCad" class="btn btn-success" style="font-family: arial; font-weight: bold"><span class="fa fa-plus mr-1"></span>Adicionar</button>
-                            </div>
-                            <div class="btnExcluir" style="position: relative; left: 150px; bottom: 58px">
-                              <button type="reset" name="btnLimpar" class="btn btn-danger" style="font-family: arial; font-weight: bold"><span class="fa fa-trash mr-1"></span>Limpar</button></td>
-                            </div>
-                          </tr>
-                        </table>
-                    </div>
-                </fieldset>
-              </form>
+        
             </div>
           </div>
           

@@ -47,20 +47,20 @@ if(isset($_POST['btnAtualizar'])){
             // Gera um nome único para a imagem
             $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
             // Caminho de onde ficará a imagem
-            $caminho_imagem = "../../Views/Funcionario/assets/images/food/" . $nome_imagem;
+            $caminho_imagem = "../../Views/Funcionario/assets/images/FotoPerfil/" . $nome_imagem;
             // Faz o upload da imagem para seu respectivo caminho
             if(move_uploaded_file($foto["tmp_name"], $caminho_imagem)){       
                    
                 $sql = "UPDATE usuario SET nome=?, tipo=?, senha=?, usuario=?, genero=?, cpf=?, 
                         salario=?, cargaHoraria=?, dica=?, foto=?  WHERE idFunc=?";
                 $stmt= $connPDO->prepare($sql);
-                $stmt->execute([$nome, $permissao, $senha, $usuario, $genero, $cpf, $salario, $cargaHoraria, $dica, $foto, $id]);
+                $stmt->execute([$nome, $permissao, $senha, $usuario, $genero, $cpf, $salario, $cargaHoraria, $dica, $nome_imagem, $id]);
                 
 
                 $sql = "UPDATE endereco SET cep=?, logradouro=?, bairro=?, cidade=?, estado=?, complemento=?, 
                         numero=?  WHERE codEndereco=?";
                 $stmt= $connPDO->prepare($sql);
-                $stmt->execute([$cep, $logradouro, $bairro, $cidade, $estado, $complemento, $complemento, $id]);
+                $stmt->execute([$cep, $logradouro, $bairro, $cidade, $estado, $complemento, $id]);
                 
                 $sql = "UPDATE telefone SET ddd=?, telefone=?, tipo=? 
                         WHERE codTelefone=?";
