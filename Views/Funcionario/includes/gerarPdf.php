@@ -10,10 +10,10 @@ function Header()
     $this->SetFont('Arial','B',12);
     // Movernos a la derecha
     $this->Cell(80);
-    $this->Image('../assets/images/Logo.png',80,2,40);
+    $this->Image('../assets/images/Logo.png',82,2,40);
     // Salto de línea
     $this->Ln(30);
-    $this->Cell(50,10,utf8_decode('Funcionários cadastrados no sistema'),80,0);
+    $this->Cell(190,10,utf8_decode('Funcionários cadastrados no sistema'),0,0,'C');
     $this->Ln(20);
     $this->cell(25,10,'Id',1,0,'C',0);
     $this->cell(40,10,'Nome',1,0,'C',0);
