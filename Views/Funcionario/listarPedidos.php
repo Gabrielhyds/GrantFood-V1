@@ -54,7 +54,12 @@ include_once "foto.php";
         </div>
 	  		<div class="img bg-wrap text-center py-4" style="background-image: url(assets/images/bg_2.jpg);">
 	  			<div class="user-logo">
-            <img  class="img" src="assets/images/FotoPerfil/<?php  echo $foto?>" alt="foto">
+          <?php
+					if (!is_null($foto)){ ?>
+					<img  class="img d-flex align-items-center justify-content-center" src="assets/images/FotoPerfil/<?php echo $foto ?>" alt="">
+					<?php }else{ ?>
+						<img  class="img d-flex align-items-center justify-content-center" src="assets/images/bg.jpg" alt="">
+					<?php }?>
 	  				<h3>Cozinha: <?php echo @$_SESSION['usuario']?></h3>
 	  			</div>
 	  		</div><br>
