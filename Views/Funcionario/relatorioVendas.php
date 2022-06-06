@@ -109,7 +109,7 @@ include_once "foto.php";
         <!-- Pagina principal -->
       <div id="content" class="p-4 p-md-5 pt-5" style="background-color:#98C1D9; max-width:109%;overflow-x:hidden">
           <label class="mb-4" style="font-size: 40px; color: white; font-weight: bold; font-family: arial; background-color: #3D5A80; width: 109.9%; position: relative; bottom: 50px; right: 65px; padding-left: 70px; padding-top: 18px; padding-bottom: 18px; margin-right: -70px;">RELATÓRIO DE VENDAS</label>
-          <form method="POST" action="cadastrar.php">
+          <form method="POST" action="includes/gerarPdf.php">
             <div>
               <?php
                 if (isset($_SESSION['msg'])) {
@@ -118,7 +118,52 @@ include_once "foto.php";
                 }
               ?>
             </div>
-            
+              <div>
+              <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
+              <table class="table alert alert-primary">
+                <thead>
+                  <tr>
+                    <td colspan="3"><h4 class="alert-heading">Funcionários cadastrados no sistema</h4><hr></td>
+                    <td><button type="submit" class="btn btn-success">Gerar PDF</button></td>
+                  </tr>
+                    <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Usuário</th>
+                    <th scope="col">Salário</th>
+                    <th scope="col">Permissão</th>
+                    </tr>
+                </thead>
+                <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
+                <tbody>
+                    <tr>
+                      <th scope="row"><?php echo $row["idFunc"]; ?></th>
+                      <td><?php echo $row["nome"]; ?></td>
+                      <td><?php echo $row["usuario"]; ?></td>
+                      <td><?php echo $row["salario"]; ?></td>
+                      <?php
+                      
+                        switch($row['tipo']){
+                          case 1:
+                            $tipo = 'Gerente';
+                            break;
+                          case 2:
+                            $tipo = "Garçom";
+                            break;
+                          case 3:
+                            $tipo = "Cozinha";
+                            break;
+                        }
+                      ?>
+                      <td><?php echo $tipo;?></td>
+                    </tr>
+                </tbody>
+                <?php   }}else{echo '<div class="alert alert-danger" role="alert">
+                                        &#128552 nenhum usuário cadastrado!
+                                      </div>';} ?> 
+                </table>
+              </div>
+            </form>
         </div>
       </div>
     </div>
