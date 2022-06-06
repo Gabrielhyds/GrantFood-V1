@@ -43,10 +43,21 @@ $pdf->AddPage();
 $pdf->SetFont('Arial','I',9);
 while ($row=$resultado->fetch_assoc()) {
 	$pdf->cell(25,10,$row['idFunc'],1,0,'C',0);
-	$pdf->cell(40,10,utf8_decode($row['nome']),1,0,'C',0);
+	$pdf->cell(40,10,utf8_decode($row['nome']),1,0,'C',0);                 
+    switch($row['tipo']){
+    case 1:
+        $tipo = 'Gerente';
+        break;
+    case 2:
+        $tipo = "Garçom";
+        break;
+    case 3:
+        $tipo = "Cozinha";
+        break;
+    }
     $pdf->cell(40,10,$row['usuario'],1,0,'C',0);
     $pdf->cell(40,10,utf8_decode($row['salario']),1,0,'C',0);
-	$pdf->cell(40,10, $row['tipo'],1,1,'C',0);
+	$pdf->cell(40,10,utf8_decode($tipo),1,1,'C',0);
 }
 $pdf->Output();
  ?>
