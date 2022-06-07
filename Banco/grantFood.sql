@@ -188,14 +188,13 @@ create table fechaConta(
     DATA DATETIME
 );
 
-
-create  table avaliar(
-    id int primary key auto_increment,
-    qtdEstrela char(5),
-    idPedido int,
-    foreign key(idPedido) references pedido(id)
+CREATE TABLE avaliacao(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	qtdEstrela CHAR(1) NOT NULL ,
+	data_hora DATETIME NOT NULL
+  codMesa int NOT NULL,
+  foreign key(codMesa) references mesa(numero)
 );
-
 
 select * from pedidoitem;
 SELECT * FROM pedido;
