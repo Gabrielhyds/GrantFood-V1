@@ -21,7 +21,7 @@ if(isset($_POST['btnAtualizar'])){
     if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
         $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Isso não é uma imagem &#128552;</b></div>';
         header("Location:../index.php");
-    } 
+    }
     if (count($error) == 0) {
             // Pega extensão da imagem
             preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext);

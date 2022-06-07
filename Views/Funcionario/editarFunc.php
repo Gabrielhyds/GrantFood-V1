@@ -144,7 +144,7 @@ include 'foto.php';
             </div>
             <div class="row">
               <div class="form-group col-md-3">
-                  <h2>Novo usuário</h2><hr>
+                  <h2>Editar usuário</h2><hr>
               </div>
               </div>
               <input type="hidden" name="id" value="<?php echo $row_usuario['idFunc']; ?>">
