@@ -256,7 +256,7 @@
                     <span class="col align-self-center text-right ">Observação:</span><span class="text-muted"><?php echo $row1['observacao']; ?></span>
                     <br><br>
                     <h4 class="col align-self-center text-right ">Total: R$ <?php echo number_format($total, 2); ?> </h5>
-                    <div class="back-to-shop"><a href="index.php">&leftarrow;</a><span class="text-muted">Voltar ao cardápio</span></div>
+                    <div class="back-to-shop"><a href="Cardapio.php">&leftarrow;</a><span class="text-muted">Voltar ao cardápio</span></div>
                     <?php
                       if($status == 'Enviado'){
                     ?>
