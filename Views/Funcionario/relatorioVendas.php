@@ -105,68 +105,104 @@ include_once "foto.php";
           </li><br>
         </ul>
     	</nav>
+              <!-- Pagina principal -->
+              <div id="content" class="p-4 p-md-5 pt-5" style="background-color:#98C1D9">
+            <label class="mb-4" style="font-size: 40px; color: white; font-weight: bold; font-family: arial; background-color: #3D5A80; width: 109.8%; position: relative; bottom: 50px; right: 65px; padding-left: 70px; padding-top: 18px; padding-bottom: 18px; margin-right: -70px;">RELATÓRIO DE VENDAS</label>
+            <div class=" mb-4 row">
+                <div class="container" style="color: white; font-family: arial; font-size: 20px; background: #3D5A80; border-radius: 4px">
+                    <div class="row">
+                        <div class="col-sm-9">Descrição de Vendas - MÊS</div>
+                        <div class="col">JANEIRO</div>
+                        <div class="w-100"></div>
+                    </div>
+                </div>
+                
+                <div class="container" style="color: white; font-family: arial; font-size: 20px; background: #3D5A80; position: relative; top: 10px; border-radius: 4px">
+                    <div class="row">
+                        <div class="col-sm-5">Lucro</div>
+                        <div class="col-sm-5">Valor</div>
+                        <div class="col-sm-2"><input type="number" style="width: 150px; height: 40px; background: #3D5A80; color: white; position: relative; right: 250px; border-radius: 4px"/></div>
+                        <div class="w-100"></div>
+                    </div>
+                </div>
 
-        <!-- Pagina principal -->
-      <div id="content" class="p-4 p-md-5 pt-5" style="background-color:#98C1D9; max-width:109%;overflow-x:hidden">
-          <label class="mb-4" style="font-size: 40px; color: white; font-weight: bold; font-family: arial; background-color: #3D5A80; width: 109.9%; position: relative; bottom: 50px; right: 65px; padding-left: 70px; padding-top: 18px; padding-bottom: 18px; margin-right: -70px;">RELATÓRIO DE VENDAS</label>
-          <form method="POST" action="includes/gerarPdf.php">
-            <div>
-              <?php
-                if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-              ?>
+                <div class="container" style="color: white; font-family: arial; font-size: 20px; background: #3D5A80; position: relative; top: 20px; padding-bottom: 50px; border-radius: 4px">
+                    <div class="row">
+                        <!--Total de Vendas-->
+                        <div class="col-sm-12" style="background:">Total de Vendas</div>
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 10px">Quantidade de itens</div>
+                        <div class="col-sm-4" style="position: relative; left: 395px">Valor</div>
+                        <div class="col-sm-4" style="position: relative; left: 300px">Qtd</div>
+                        <div class="col-sm-4" style="position: relative; left: 150px">Total</div>
+                        <div class="col-sm-3"><input type="text" style="width: 200px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <div class="col-sm-3"><input type="number" style="width: 150px; height: 40px; background: #3D5A80; color: white; position: relative; left: 105px; border-radius: 4px"/></div>
+                        <div class="col-sm-3"><input type="number" style="width: 100px; height: 40px; background: #3D5A80; color: white; position: relative; left: 110px; border-radius: 4px"/></div>
+                        <div class="col-sm-3"><input type="number" style="width: 130px; height: 40px; background: #3D5A80; color: white; position: relative; left: 30px; border-radius: 4px"/></div>
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 20px">Total</div>
+                        <div class="col-sm-12"><input type="number" style="width: 130px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <div class="w-100"></div>
+                    </div>
+                </div>
+
+                <div class="container" style="color: white; font-family: arial; font-size: 20px; background: #3D5A80; position: relative; top: 40px; padding-bottom: 50px; border-radius: 4px">
+                    <div class="row">
+                        <!--Gastos Mensais-->
+                        <div class="col-sm-12">Gastos Mensais</div>
+                        
+                        <!--Salário dos Funcionários-->
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 10px">Salário dos funcionários</div>
+                        <div class="col-sm-12" style="position: relative; left: 395px">Valor</div>
+                        <div class="col-sm-6"><input type="text" style="width: 200px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <div class="col-sm-6"><input type="number" style="width: 150px; height: 40px; background: #3D5A80; color: white; position: relative; right: 132px; border-radius: 4px"/></div>
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 20px">Total</div>
+                        <div class="col-sm-12"><input type="number" style="width: 130px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <!--LINHA-->
+                        <div style="background: white; width: 80%; height: 1px; font-size: 1px; position: relative; top: 30px; left: 90px;">LINHA</div>
+                        <!--LINHA-->
+                        
+                        <!--Utensílios-->
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 60px">Utensílios</div>
+                        <div class="col-sm-4" style="position: relative; left: 395px">Valor</div>
+                        <div class="col-sm-4" style="position: relative; left: 300px">Qtd</div>
+                        <div class="col-sm-4" style="position: relative; left: 150px">Total</div>
+                        <div class="col-sm-3"><input type="text" style="width: 200px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <div class="col-sm-3"><input type="number" style="width: 150px; height: 40px; background: #3D5A80; color: white; position: relative; left: 105px; border-radius: 4px"/></div>
+                        <div class="col-sm-3"><input type="number" style="width: 100px; height: 40px; background: #3D5A80; color: white; position: relative; left: 110px; border-radius: 4px"/></div>
+                        <div class="col-sm-3"><input type="number" style="width: 130px; height: 40px; background: #3D5A80; color: white; position: relative; left: 30px; border-radius: 4px"/></div>
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 20px">Total</div>
+                        <div class="col-sm-12"><input type="number" style="width: 130px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <div class="w-100"></div>
+                        <!--LINHA-->
+                         <div style="background: white; width: 80%; height: 1px; font-size: 1px; position: relative; top: 30px; left: 90px;">LINHA</div>
+                        <!--LINHA-->
+                        
+                        <!--Contas-->
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 60px">Contas</div>
+                        <div class="col-sm-12" style="position: relative; left: 395px">Valor</div>
+                        <div class="col-sm-6"><input type="text" style="width: 200px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <div class="col-sm-6"><input type="number" style="width: 150px; height: 40px; background: #3D5A80; color: white; position: relative; right: 132px; border-radius: 4px"/></div>
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 20px">Total</div>
+                        <div class="col-sm-12"><input type="number" style="width: 130px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <!--LINHA-->
+                        <div style="background: white; width: 80%; height: 1px; font-size: 1px; position: relative; top: 30px; left: 90px;">LINHA</div>
+                        <!--LINHA-->
+
+                        <!--Manutenção Geral-->
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 60px">Manutenção Geral</div>
+                        <div class="col-sm-12" style="position: relative; left: 395px">Valor</div>
+                        <div class="col-sm-6"><input type="text" disabled style="width: 200px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <div class="col-sm-6"><input type="number" style="width: 150px; height: 40px; background: #3D5A80; color: white; position: relative; right: 132px; border-radius: 4px"/></div>
+                        <div class="col-sm-12" style="position: relative; left: 20px; padding-top: 20px">Total</div>
+                        <div class="col-sm-12"><input type="number" style="width: 130px; height: 40px; background: #3D5A80; color: white; position: relative; left: 20px; border-radius: 4px"/></div>
+                        <button type="submit" class="btn btn-success1" name="btnPdf" style="position: relative; left: 16px; top: 30px; width: 145px; height: 50px; font-size: 20px; border-radius: 4px">Gerar PDF</button>
+                    </div>
+                </div>
+            
             </div>
-              <div>
-              <?php $sql = "SELECT * FROM usuario"; $result = $connection->query($sql);?>
-              <table class="table alert alert-primary">
-                <thead>
-                  <tr>
-                    <td colspan="3"><h4 class="alert-heading">Funcionários cadastrados no sistema</h4><hr></td>
-                    <td><button type="submit" class="btn btn-success">Gerar PDF</button></td>
-                  </tr>
-                    <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Usuário</th>
-                    <th scope="col">Salário</th>
-                    <th scope="col">Permissão</th>
-                    </tr>
-                </thead>
-                <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
-                <tbody>
-                    <tr>
-                      <th scope="row"><?php echo $row["idFunc"]; ?></th>
-                      <td><?php echo $row["nome"]; ?></td>
-                      <td><?php echo $row["usuario"]; ?></td>
-                      <td><?php echo $row["salario"]; ?></td>
-                      <?php
-                      
-                        switch($row['tipo']){
-                          case 1:
-                            $tipo = 'Gerente';
-                            break;
-                          case 2:
-                            $tipo = "Garçom";
-                            break;
-                          case 3:
-                            $tipo = "Cozinha";
-                            break;
-                        }
-                      ?>
-                      <td><?php echo $tipo;?></td>
-                    </tr>
-                </tbody>
-                <?php   }}else{echo '<div class="alert alert-danger" role="alert">
-                                        &#128552 nenhum usuário cadastrado!
-                                      </div>';} ?> 
-                </table>
-              </div>
-            </form>
         </div>
-      </div>
+
     </div>
+
     <?php
       include 'footer.php';
     ?>

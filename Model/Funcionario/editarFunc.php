@@ -15,6 +15,7 @@ if(isset($_POST['btnAtualizar'])){
     $nome = $_POST['nome'];
     $permissao = $_POST['permissao'];
     $senha = MD5($_POST['senha']);
+    $comparaSenha = $_POST['Confirmasenha'];
     $usuario = $_POST['usuario'];
     $genero = $_POST['genero'];
     $cpf = $_POST['cpf'];
@@ -41,6 +42,10 @@ if(isset($_POST['btnAtualizar'])){
         $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Isso não é uma imagem &#128552;</b></div>';
         header("Location:../index.php");
     } 
+    if($senha != $comparaSenha){
+        $_SESSION['msg'] = '<div class="alert alert-danger" role="alert"><b>Senhas diferentes &#128552;</b></div>';
+        header("Location:../index.php");
+    }
     if (count($error) == 0) {
             // Pega extensão da imagem
             preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext);
