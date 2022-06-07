@@ -39,7 +39,7 @@
 <div class="container"> 
     <div class="row">
         <div style="width: 650px; margin-left: 20%; margin-top: 50px;">
-              <form action="../../../Model/Funcionario/removerMesa.php" method="POST">
+              <form action="../../Model/Funcionario/removerMesa.php" method="POST">
                
                     <div class="control-group">
                         <table style="position: relative; bottom: 70px;" >
