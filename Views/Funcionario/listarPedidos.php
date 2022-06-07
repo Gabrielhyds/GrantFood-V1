@@ -10,14 +10,12 @@ session_start();
  ob_start();
 
 //verifica se a sessão usuario existe  
-
-
 if(!isset($_SESSION['usuario']))
-  {
-    //se não houver sessão ele redireciona para tela de login
-    header("Location: ../Login/index.php");
-    exit;
-}
+    {
+      //se não houver sessão ele redireciona para tela de login
+      header("Location: ../Login/index.php");
+      exit;
+  }
 
 //inclui a foto do usuário
 include_once "foto.php";
@@ -193,7 +191,9 @@ include_once "foto.php";
               }
             }else{
               ?>
-                <h3>Nenhum pedido.</h3>
+                <div class="alert alert-primary" style="font-size: 25px" role="alert">
+                 Nenhum pedido.
+                </div>
               <?php
             }
           ?>
@@ -203,6 +203,7 @@ include_once "foto.php";
 
       </div>
   </div>
+  
     <?php
       include 'footer.php';    
     ?>
