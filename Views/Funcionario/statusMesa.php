@@ -28,7 +28,7 @@ include_once "foto.php";
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<?php
     if(!isset($_GET['telas'])){
-      echo "<meta HTTP-EQUIV='refresh' CONTENT='20'>";
+     echo "<meta HTTP-EQUIV='refresh' CONTENT='20'>";
     }
       
     ?>
