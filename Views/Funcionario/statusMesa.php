@@ -12,16 +12,11 @@ session_start();
 //verifica se a sessão usuario existe  
 
 
-if(!isset($_SESSION['usuario']))
-  {
-    //se não houver sessão ele redireciona para tela de login
-    header("Location: ../Login/index.php");
-    exit;
-}
+require_once('includes/sessao.php');
+
 
 //inclui a foto do usuário
 include_once "foto.php";
-
 ?>
 <!doctype html>
 <html lang="en">

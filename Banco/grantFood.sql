@@ -31,8 +31,6 @@ create table endereco(
     foreign key(codEndereco) references usuario(idFunc)
 );
 
-INSERT INTO endereco (cep,logradouro,bairro,cidade,estado,complemento,codEndereco,numero) VALUES('13184556',"sebastina ramos","jd santana","hortolandia","sp","",1,49);
-
 create table telefone(
     id int primary key auto_increment,
     ddd char(3),
@@ -42,15 +40,12 @@ create table telefone(
     foreign key(codTelefone) references usuario(idFunc)
 );
 
-INSERT INTO telefone (ddd,telefone,tipo,codTelefone) VALUES('11','99999999','Residencial','1');
-
 create table gastos(
     id int primary key auto_increment,
-    estoque decimal(7,2),
-    salario decimal(7,2),
-    utensilios decimal(7,2),
-    conta decimal(7,2),
-    manutencaoGeral decimal(7,2)
+    valor decimal(7,2),
+    tipo varchar(255), 
+    descricao varchar(255),
+    data datetime
 );
 
 CREATE TABLE sistema (
@@ -188,22 +183,10 @@ create table fechaConta(
     DATA DATETIME
 );
 
-
-create  table avaliar(
-    id int primary key auto_increment,
-    qtdEstrela char(5),
-    idPedido int,
-    foreign key(idPedido) references pedido(id)
+CREATE TABLE avaliacao(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	qtdEstrela CHAR(1) NOT NULL ,
+	data_hora DATETIME NOT NULL
+  codMesa int NOT NULL,
+  foreign key(codMesa) references mesa(numero)
 );
-
-
-select * from pedidoitem;
-SELECT * FROM pedido;
-SELECT * FROM sistema;
-SELECT id FROM pedidoitem;
-select * from mesa;
-select * from sessao;
-
-DELETE FROM sessao WHERE codMesa = 3;
-
-SHOW TRIGGERs;

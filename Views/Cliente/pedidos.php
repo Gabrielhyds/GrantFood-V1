@@ -15,7 +15,6 @@
       header("location: entrar");
     exit;
   }
-
 ?>
 
 <!DOCTYPE html>
@@ -47,13 +46,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
   <!-- font awesome style -->
   <script src="https://kit.fontawesome.com/d9f3da8e1a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 
   <!-- Custom styles for this template -->
   <link href="assets/../assets/css/style.css" rel="stylesheet" />
    <link href="assets/../assets/css/carrinho.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="assets/css/responsive.css" rel="stylesheet" />
+  <style>
+    .estrelas input[type=radio] {
+    display: none;
+      }
 
+      .estrelas label i.fa:before {
+          content: '\f005';
+          color: #FC0;
+      }
+
+      .estrelas input[type=radio]:checked~label i.fa:before {
+          color: #CCC;
+      }
+
+      .botao{
+        padding: 10px;
+        color: white;
+        background-color: black;
+        margin-left: 15px;
+        border: none; 
+        font-size: 13px;
+        font-weight: bold;
+      }
+  </style>
 </head>
 
 <body class="sub_page" >
@@ -159,11 +183,25 @@
         if(isset($_GET['success'])){
           if($_GET['success'] == 'fecharConta'){
             ?>
-              <div class="alert alert-warning" role="alert">
+              <div class="alert alert-warning sucesso" role="alert">
                 O garçom virá até você para finalizar a conta. Aguarde! 😀👍
               </div>
             <?php
+            include 'avaliar.php';
           }
+          if($_GET['success'] == 'avaliar'){
+                if(isset($_SESSION['msg'])){
+                  echo $_SESSION['msg']."<br><br>";
+                  unset($_SESSION['msg']);
+                }
+          }
+        }else{
+          ?> 
+          
+              <form action="../../Model/Cliente/fecharConta.php" method="POST">
+                <button type="submit" class="btn" name="update">Fechar conta</button>
+              </form>
+          <?php
         }
         $sessao = $_SESSION['chave'];
         $sql = "SELECT * FROM pedido WHERE sessao = '$sessao' ORDER BY id DESC";
@@ -172,14 +210,10 @@
                                             
           if($gotResuslts1){
             if(mysqli_num_rows($gotResuslts1)>0){
-              ?>
-              <form action="../../Model/Cliente/fecharConta.php" method="POST">
-                <button type="submit" class="btn" name="update">Fechar conta</button>
-              </form>
-              <?php
               while($row1 = mysqli_fetch_array($gotResuslts1)){
               $numero = $row1['id'];
         ?>
+        
         <div class="row">
           <div class="card">
                 <div class="col-md-12 cart">
@@ -256,7 +290,7 @@
                     <span class="col align-self-center text-right ">Observação:</span><span class="text-muted"><?php echo $row1['observacao']; ?></span>
                     <br><br>
                     <h4 class="col align-self-center text-right ">Total: R$ <?php echo number_format($total, 2); ?> </h5>
-                    <div class="back-to-shop"><a href="index.php">&leftarrow;</a><span class="text-muted">Voltar ao cardápio</span></div>
+                    <div class="back-to-shop"><a href="Cardapio.php">&leftarrow;</a><span class="text-muted">Voltar ao cardápio</span></div>
                     <?php
                       if($status == 'Enviado'){
                     ?>

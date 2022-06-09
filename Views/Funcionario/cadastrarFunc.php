@@ -7,15 +7,7 @@ session_start();
 include '../../Banco/conexao.php';
 
 //verifica se a sessão usuario existe  
-
-/*
-if(!isset($_SESSION['usuario']))
-  {
-    //se não houver sessão ele redireciona para tela de login
-    header("Location: ../../../index.php");
-    exit;
-}
-*/
+require_once('includes/sessao.php');
 
 include_once "foto.php";
 ?>
