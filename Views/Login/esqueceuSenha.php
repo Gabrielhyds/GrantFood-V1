@@ -40,7 +40,7 @@
 		      		</div>
 	            <div class="form-group">
 	            	<div class="icon d-flex align-items-center justify-content-center"><span class="fa fa-lock"></span></div>
-	              <input type="text" name="dica" class="form-control" placeholder="Qual é o nome do meio da sua mãe?" required>
+	              <input type="number" name="cpf" class="form-control" placeholder="Digite seu CPF" required>
 	            </div>
 	            <div class="form-group">
 	            	<button type="submit" name="btnRecuperar" class="btn form-control rounded submit px-3" style="background-color: FF3A0B; font-size: 20px">Gerar Nova Senha</button>
@@ -49,10 +49,10 @@
 					<?php
 						    if(isset($_POST['btnRecuperar'])){
 								$usuario = $_POST['usuario'];
-								$dica = $_POST['dica'];
+								$cpf = $_POST['cpf'];
 								$_SESSION['usuario'] = $_POST['usuario'];
-								$_SESSION['dica'] = $_POST['dica'];
-								$sql = $connection->query("SELECT * FROM usuario WHERE usuario = '$usuario' && dica = '$dica'");	
+								$_SESSION['cpf'] = $_POST['cpf'];
+								$sql = $connection->query("SELECT * FROM usuario WHERE usuario = '$usuario' && cpf = '$cpf'");	
 								if($row=$sql->fetch_assoc()){
 									header("Location:recuperarSenha.php");
 								}else{

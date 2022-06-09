@@ -19,7 +19,6 @@ if(!isset($_SESSION['usuario']))
 
 //inclui a foto do usuário
 include_once "foto.php";
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -71,51 +70,49 @@ include_once "foto.php";
 	  			</div>
 	  		</div><br>
         <ul class="list-unstyled components mb-5">
-        <li >
+        <li>
             <a href="statusMesa.php"><span class="fa fa-table mr-3"></span>Status das Mesas</a>
-          </li>
-          <li >
-              <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-users mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
-              <ul class="collapse list-unstyled" id="userSubmenu">
-                  <li>
-                      <a href="cadastrarFunc.php"><span class="fa fa-user-plus mr-3"></span>Cadastrar Funcionário</a>
-                  </li>
-                  <li>
-                      <a href="ListarFunc.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Funcionário</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="relatorioVendas.php"><span class="fa fa-file-text-o mr-3"></span>Relatorio de Vendas</a>
-          </li>
-          <li class="active">
-                    <a href="#cardapioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-cart-plus mr-3"></span>Cardápio<i class="icofont-rounded-down text-white"></i></a>
-                    <ul class="collapse list-unstyled" id="cardapioSubmenu">
-                        <li>
-                            <a href="cardapio.php"><span class="fa fa-apple mr-3" aria-hidden="true"></span>Cadastrar Produto</a>
-                        </li>
-                        <li>
-                            <a href="listarCad.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Produto</a>
-                        </li>
-                        <li>
-                            <a href="listarCateg.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Categoria</a>
-                        </li>
-                    </ul>
-                </li>
-
-          <li>
-            <a href="#"><span class="fa fa-plus-circle mr-3"></span>Inserir</a>
-          </li>
-          <li>
-            <a href="../../Controller/Funcionario/sair.php"><span class="fa fa-sign-out mr-3"></span>Sair</a>
-          </li><br>
-        </ul>
+        </li>
+        <li >
+          <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-users mr-3"></span>Gerenciar Funcionários<i class="icofont-rounded-down text-white"></i></a>
+          <ul class="collapse list-unstyled" id="userSubmenu">
+              <li>
+                  <a href="cadastrarFunc.php"><span class="fa fa-user-plus mr-3"></span>Cadastrar Funcionário</a>
+              </li>
+              <li>
+                  <a href="ListarFunc.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Funcionário</a>
+              </li>
+          </ul>
+        </li>
+        <li>
+          <a href="relatorioVendas.php"><span class="fa fa-file-text-o mr-3"></span>Relatorio de Vendas</a>
+        </li>
+        <li class="active">
+          <a href="#cardapioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="fa fa-cart-plus mr-3"></span>Cardápio<i class="icofont-rounded-down text-white"></i></a>
+          <ul class="collapse list-unstyled" id="cardapioSubmenu">
+              <li>
+                  <a href="cardapio.php"><span class="fa fa-apple mr-3" aria-hidden="true"></span>Cadastrar Produto</a>
+              </li>
+              <li>
+                  <a href="listarCad.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Produto</a>
+              </li>
+              <li>
+                  <a href="listarCateg.php"><span class="fa fa-eye mr-3" aria-hidden="true"></span>Consultar Categoria</a>
+              </li>
+          </ul>
+        </li>
+            <li>
+              <a href="#"><span class="fa fa-plus-circle mr-3"></span>Inserir</a>
+            </li>
+            <li>
+              <a href="../../Controller/Funcionario/sair.php"><span class="fa fa-sign-out mr-3"></span>Sair</a>
+            </li><br>
+        </li>
     	</nav>
 
         <!-- Pagina principal -->
       <div id="content" class="p-4 p-md-5 pt-5" style="background-color:#98C1D9; max-width:109%;overflow-x:hidden">
           <label class="mb-4" style="font-size: 40px; color: white; font-weight: bold; font-family: arial; background-color: #3D5A80; width: 109.9%; position: relative; bottom: 50px; right: 65px; padding-left: 70px; padding-top: 18px; padding-bottom: 18px; margin-right: -70px;">CONSULTAR PRODUTOS</label>
-          <form method="POST">
             <div>
               <?php
                 if (isset($_SESSION['msg'])) {
@@ -136,37 +133,63 @@ include_once "foto.php";
                     <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Descricao</th>
-                    <th scope="col">imagem</th>
+                    <th scope="col">imagem</th>                 
                     <th scope="col">preço</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Ações</th>
+                    
                     </tr>
                 </thead>
                 <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
                 <tbody>
                     <tr>
-                    <td><?php echo $row["nome"]; ?></td>
-                    <td><?php echo $row["descricao"]; ?></td>
-                    <td><?php echo $row["image"]; ?></td>
-                    <td><?php echo $row["preco"]; ?></td>
-                    <td><?php echo $row["nomeCat"]; ?></td>
-                    <td> 
-                      <a href="editarCad.php?id=<?php echo $row['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg>
-                      </a> 
-                      <a href="../../Model/Funcionario/excluirCad.php?id=<?php echo  $row['id']; ?>"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
-                      </a> 
-                    </td> 
+                      <td><?php echo $row["nome"]; ?></td>
+                      <td><?php echo $row["descricao"]; ?></td>
+                      <td><img src="assets/images/food/<?php echo $row['image']; ?>" alt="" style="width:75px;height:75px;margin-top:10px"></td>
+                      <td><?php echo $row["preco"]; ?></td>
+                      <td><?php echo $row["nomeCat"]; ?></td>
+                      <td> 
+                        <button type="button" name="editar" class="btn btn-success" onclick="window.location.href='editarCad.php?id=<?php echo $row['id']; ?>'">
+                              Editar
+                        </button> 
+                        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#myModal">
+                        Excluir
+                        </button>
+                        <!-- The Modal -->
+                        <div class="modal fade" id="myModal">
+                          <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            
+                              <!-- Modal Header -->
+                              <div class="modal-header">
+                                <h4 class="modal-title">Confirmação</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              </div>
+                              
+                              <!-- Modal body -->
+                              <div class="modal-body">
+                                <b>Tem certeza que deseja excluir o produto?</b>
+                              </div>
+                              
+                              <!-- Modal footer -->
+                              <div class="modal-footer">
+                              <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                              <button type="button" onclick="window.location.href='../../Model/funcionario/excluirCad.php?id=<?php echo $row['id']; ?>'" class="btn btn-danger" data-dismiss="modal">Excluir</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>  
+                      </td> 
                     </tr>
                 </tbody>
-                <?php   }}else{echo '<div class="alert alert-danger" role="alert">
-                                        &#128552 nenhum produto cadastrado!
-                                      </div>';} ?> 
+                <?php   
+                    }}else{echo '<div class="alert alert-danger" role="alert">
+                                  &#128552 nenhum produto cadastrado!
+                                </div>';
+                    } 
+                ?> 
                 </table>
-              </div>
-            </form><br>
+              </div>  
           </div>  
         </div>
       </div>
@@ -178,7 +201,9 @@ include_once "foto.php";
     <script src="assets/js/popper.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="cep.js"></script>
+    <script src="assets/js/modal.js"></script>
   </body>
 </html>
