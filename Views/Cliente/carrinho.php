@@ -210,7 +210,7 @@ if(isset($_GET["action"]))
                     <label for="floatingTextarea">Observação (opcional)</label>
                     <textarea class="form-control" name="observacao" style="height: 100px" placeholder="Escreva a sua observação do pedido." id="floatingTextarea"></textarea>
                   </div>
-                    <div class="back-to-shop"><a href="index.php">&leftarrow;</a><span class="text-muted">Voltar ao cardápio</span></div>
+                    <div class="back-to-shop"><a href="Cardapio.php">&leftarrow;</a><span class="text-muted">Voltar ao cardápio</span></div>
                 </div>
                 <div class="col-md-4 summary">
                     <div>

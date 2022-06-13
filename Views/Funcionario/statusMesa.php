@@ -12,16 +12,11 @@ session_start();
 //verifica se a sessão usuario existe  
 
 
-if(!isset($_SESSION['usuario']))
-  {
-    //se não houver sessão ele redireciona para tela de login
-    header("Location: ../Login/index.php");
-    exit;
-}
+require_once('includes/sessao.php');
+
 
 //inclui a foto do usuário
 include_once "foto.php";
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -33,7 +28,7 @@ include_once "foto.php";
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 		<?php
     if(!isset($_GET['telas'])){
-      echo "<meta HTTP-EQUIV='refresh' CONTENT='20'>";
+     echo "<meta HTTP-EQUIV='refresh' CONTENT='20'>";
     }
       
     ?>

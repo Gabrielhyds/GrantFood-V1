@@ -54,7 +54,7 @@
                           <!--Inserir e Remover-->
                           <tr>
                             <div class="btn" >
-                              <td style="position: relative;  top: 20px"><button type="submit" name="remover" class="btn btn-success" style="font-family: arial; font-weight: bold"><span class="fa fa-plus mr-1"></span>Remover</button>
+                              <td style="position: relative;  top: 20px"><button type="submit" name="remover" class="btn btn-danger" style="font-family: arial; font-weight: bold"><i class="fa fa-trash" aria-hidden="true"></i> Remover</button>
                             </div>
                           </tr>
                         </table>
