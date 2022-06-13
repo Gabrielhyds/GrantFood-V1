@@ -136,10 +136,11 @@ include_once "foto.php";
                     <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Descricao</th>
-                    <th scope="col">imagem</th>
+                    <th scope="col">imagem</th>                 
                     <th scope="col">preço</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Ações</th>
+                    
                     </tr>
                 </thead>
                 <?php if ($result->num_rows > 0) { while($row = $result->fetch_assoc()) {?> 
@@ -147,7 +148,7 @@ include_once "foto.php";
                     <tr>
                     <td><?php echo $row["nome"]; ?></td>
                     <td><?php echo $row["descricao"]; ?></td>
-                    <td><?php echo $row["image"]; ?></td>
+                    <td><img src="assets/images/food/<?php echo $row['image']; ?>" alt="" style="width:75px;height:75px;margin-top:10px"></td>
                     <td><?php echo $row["preco"]; ?></td>
                     <td><?php echo $row["nomeCat"]; ?></td>
                     <td> 
