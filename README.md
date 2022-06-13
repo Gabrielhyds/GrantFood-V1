@@ -40,4 +40,4 @@
   - fazer pedido
   - cancelar pedido
   - fechar conta
-
+  - avaliar o sistema 
