@@ -1,5 +1,5 @@
 
-# TCC - GRANTFOOD
+# TCC - GRANTFOOD Versão 1.0
   - É aplicação web para gestão de bares e restaurantes.
   - Através do sistema que desenvolvemos, a logística e o gerenciamento do restaurante fica mais eficiente e rápido, pois implementamos no projeto tecnologias capazes de responder a alta demanda no estabelecimento, facilitando o atendimento e os pedidos requeridos pelos clientes.
  
